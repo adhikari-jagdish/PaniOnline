@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+
+    <color name="colorAccent">#D81B60</color>
+    <color name="color_gradient_fb3163">#fb3163</color>
+    <color name="color_gradient_F8385E">#F8385E</color>
+    <color name="color_gradient_f7523c">#f7523c</color>
+    <color name="color_gradient_f5bd99">#f5bd99</color>
+    <color name="color_gradient_ebc8b2">#ebc8b2</color>
+    <color name="color_gradient_8f3d4b">#8f3d4b</color>
+    <color name="color_gradient_df4f6f">#df4f6f</color>
+    <color name="color_b1526a">#b1526a</color>
+    <color name="colorPinkDark">#93073f</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+</resources>

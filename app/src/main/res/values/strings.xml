@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Pani Online</string>
+
+
+    <!--Welcome Screen-->
+    <string name="enter_as_client">Enter as Client</string>
+    <string name="enter_as_delivery">Enter as Delivery</string>
+    <string name="enter_as_reseller">Enter as Reseller</string>
+    <string name="book_appointment_to_recieve">Book an appointment to receive a range of services from an agent or a business nearby.</string>
+    <string name="enjoy_services">Enjoy services from the comfort of your own home.</string>
+
+</resources>
