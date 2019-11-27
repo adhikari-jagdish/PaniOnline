@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item type="integer" name="max_length_20">20</item>
+    <item type="integer" name="max_length_50">50</item>
+    <item type="integer" name="max_length_15">15</item>
+    <item type="integer" name="max_image_count">5</item>
+    <item type="integer" name="max_video_count">1</item>
+    <item type="integer" name="maxVideoDuration">15</item>
+
+    <item type="integer" name="max_length_30">30</item>
+    <item type="integer" name="minNameCount">2</item>
+
+</resources>

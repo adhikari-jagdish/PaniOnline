@@ -9,4 +9,15 @@
     <string name="book_appointment_to_recieve">Book an appointment to receive a range of services from an agent or a business nearby.</string>
     <string name="enjoy_services">Enjoy services from the comfort of your own home.</string>
 
+    <!--Login Screen -->
+    <string name="signup">Sign up</string>
+    <string name="let_get_started">Let\'s get Started</string>
+    <string name="login_book">Login and book your water jar now.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot">Forgot?</string>
+    <string name="login">Login</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="or">OR</string>
 </resources>

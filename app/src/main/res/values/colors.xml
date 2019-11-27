@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#3b5998</color>
+    <color name="colorPrimaryDark">#314F8C</color>
 
     <color name="colorAccent">#D81B60</color>
     <color name="color_gradient_fb3163">#fb3163</color>
@@ -15,4 +15,6 @@
     <color name="colorPinkDark">#93073f</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="color_5074BD">#5074BD</color>
+    <color name="color_3b5998">#3b5998</color>
 </resources>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.login.LoginActivity">
+
+        <ImageView
+            android:id="@+id/cross_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp20"
+            android:src="@drawable/component"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/signup_tv"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp20"
+            android:text="@string/signup"
+            android:textAppearance="@style/Regular_black_18_text"
+            android:textSize="@dimen/text_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/cross_iv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/lets_get_started_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="@string/let_get_started"
+                    android:textAppearance="@style/Semibold_black_18_text"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_26"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:text="@string/login_book"
+                    android:textAppearance="@style/Regular_black_18_text"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_15"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/lets_get_started_tv"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/email_til"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp25"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:paddingStart="@dimen/dp15"
+                    android:paddingEnd="@dimen/dp15"
+                    app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/email_et"
+                        style="@style/TextInputLayout"
+                        android:hint="@string/email"
+                        android:maxLength="@integer/max_length_50"
+                        android:inputType="textEmailAddress" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp10"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    android:paddingStart="@dimen/dp15"
+                    android:paddingEnd="@dimen/dp15"
+                    app:layout_constraintTop_toBottomOf="@id/email_til"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/pw_til"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password_et"
+                        style="@style/TextInputLayout"
+                        android:hint="@string/password"
+                        android:maxLength="@integer/max_length_20"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/forgot_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp15"
+                    android:text="@string/forgot"
+                    android:textAppearance="@style/Semibold_black_18_text"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_13"
+                    app:layout_constraintTop_toBottomOf="@id/pw_til"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <Button
+                    android:id="@+id/login_btn"
+                    style="@style/SigninButton"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:text="@string/login"
+                    app:layout_constraintTop_toBottomOf="@id/forgot_tv"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:minHeight="@dimen/dp50"
+                    android:paddingTop="@dimen/dp10"
+                    android:paddingBottom="@dimen/dp10"
+                    android:text="@string/or"
+                    android:textAppearance="@style/Regular_black_18_text"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_15"
+                    app:layout_constraintTop_toBottomOf="@id/login_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/continue_with_fb_btn"
+                android:padding="@dimen/dp15"
+                android:background="@drawable/black_border_rectangle_drawable">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dp10"
+                    android:layout_marginEnd="@dimen/dp35"
+                    android:drawableStart="@drawable/google"
+                    android:drawablePadding="@dimen/dp40"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/continue_with_google"
+                    android:textAppearance="@style/Regular_black_18_text"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_15"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:padding="@dimen/dp15"
+                    android:id="@+id/continue_with_fb_btn"
+                    android:background="@drawable/blue_backround_rectangle_drawable">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dp10"
+                        android:layout_marginEnd="@dimen/dp35"
+                        android:drawableStart="@drawable/facebook_logo"
+                        android:drawablePadding="@dimen/dp50"
+                        android:text="@string/continue_with_facebook"
+                        android:textAppearance="@style/Regular_black_18_text"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/text_15"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

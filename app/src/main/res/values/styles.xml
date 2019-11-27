@@ -17,4 +17,49 @@
         <item name="android:layout_marginBottom">@dimen/dp18</item>
     </style>
 
+    <!--Text Formating Styled-->
+    <style name="Regular_black_18_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/color_5074BD</item>
+    </style>
+
+    <style name="Semibold_black_18_text">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+
+    <!--TextInpur Layout Formating-->
+    <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:fontFamily">@font/poppins_light</item>
+    </style>
+
+    <style name="TextInputLayout" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColorHint">@android:color/black</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:digits">,@.-&amp;#(/)*qwertzuiopasdfghjklyxcvbnm,QWERTYUIOPASDFGHJKLZXCVBNM,0123456789</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textAppearance">@style/Regular_black_18_text</item>
+    </style>
+
+
+    <!--Buttons-->
+    <style name="SigninButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/primary_color_backround_rectangle_drawable</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textAppearance">@style/Regular_black_18_text</item>
+    </style>
+
 </resources>
