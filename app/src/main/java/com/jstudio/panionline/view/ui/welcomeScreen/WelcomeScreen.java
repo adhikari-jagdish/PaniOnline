@@ -19,8 +19,9 @@ import android.widget.TextView;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityWelcomeScreenBinding;
+import com.jstudio.panionline.view.ui.login.LoginActivity;
 
-public class WelcomeScreen extends AppCompatActivity  implements ViewPager.OnPageChangeListener {
+public class WelcomeScreen extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
     private ActivityWelcomeScreenBinding mBinding;
     private int mPagerIndicatorCount;
     private CustomPagerAdapter mCustomPagerAdapter;
@@ -32,11 +33,6 @@ public class WelcomeScreen extends AppCompatActivity  implements ViewPager.OnPag
             R.drawable.slider3
     };
 
-    int[] mStrings = {
-            R.string.book_appointment_to_recieve,
-            R.string.enjoy_services,
-            R.string.enjoy_services
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +44,14 @@ public class WelcomeScreen extends AppCompatActivity  implements ViewPager.OnPag
         mBinding.pager.setCurrentItem(0);
         mBinding.pager.addOnPageChangeListener(this);
         setUiPageViewController();
+        initClickListeners();
     }
 
+    /**
+     * Starts the Tutorial Activity Using Intent
+     *
+     * @param context context of the current activity
+     */
     public static void startTutorialActivity(Context context) {
         context.startActivity(createIntent(context));
     }
@@ -58,6 +60,15 @@ public class WelcomeScreen extends AppCompatActivity  implements ViewPager.OnPag
         Intent intent = new Intent(context, WelcomeScreen.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         return intent;
+    }
+
+    /**
+     * All click events of the app handled here
+     */
+    private void initClickListeners() {
+        mBinding.agentBtn.setOnClickListener(this);
+        mBinding.clientBtn.setOnClickListener(this);
+        mBinding.businessBtn.setOnClickListener(this);
     }
 
 
@@ -111,6 +122,26 @@ public class WelcomeScreen extends AppCompatActivity  implements ViewPager.OnPag
 
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v != null) {
+            switch (v.getId()) {
+
+                case R.id.agent_btn:
+
+                    break;
+
+                case R.id.client_btn:
+                    LoginActivity.startLoginActivity(this);
+                    break;
+
+                case R.id.business_btn:
+
+                    break;
+            }
+        }
+    }
+
 
     private class CustomPagerAdapter extends PagerAdapter {
         Context mContext;
@@ -147,7 +178,6 @@ public class WelcomeScreen extends AppCompatActivity  implements ViewPager.OnPag
             container.removeView((FrameLayout) object);
         }
     }
-
 
 
 }

@@ -34,10 +34,10 @@
     <dimen name="dp35">35dp</dimen>
     <dimen name="dp37">37dp</dimen>
     <dimen name="dp38">38dp</dimen>
-    <dimen name="dp40">40dp</dimen>
     <dimen name="dp32">32dp</dimen>
     <dimen name="dp33">33dp</dimen>
     <dimen name="dp39">39dp</dimen>
+    <dimen name="dp40">40dp</dimen>
     <dimen name="dp41">41dp</dimen>
     <dimen name="dp42">42dp</dimen>
     <dimen name="dp43">43dp</dimen>

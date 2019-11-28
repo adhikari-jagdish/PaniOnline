@@ -30,6 +30,26 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <style name="SemiBold_black_17_text">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">@dimen/text_17</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="OTPText">
+        <item name="android:layout_width">@dimen/dp50</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/dp10</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:textSize">@dimen/text_30</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/Semibold_black_18_text</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:maxLength">1</item>
+
+    </style>
+
 
 
     <!--TextInpur Layout Formating-->

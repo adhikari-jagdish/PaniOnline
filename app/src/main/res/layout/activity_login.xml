@@ -18,16 +18,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/signup_tv"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/dp20"
-            android:text="@string/signup"
-            android:textAppearance="@style/Regular_black_18_text"
-            android:textSize="@dimen/text_15"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:layout_width="0dp"
@@ -72,7 +62,7 @@
                     />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/email_til"
+                    android:id="@+id/contact_til"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp25"
@@ -85,46 +75,13 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/email_et"
+                        android:id="@+id/contact_et"
                         style="@style/TextInputLayout"
-                        android:hint="@string/email"
+                        android:hint="@string/contact_no"
                         android:maxLength="@integer/max_length_50"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="phone" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp10"
-                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
-                    android:paddingStart="@dimen/dp15"
-                    android:paddingEnd="@dimen/dp15"
-                    app:layout_constraintTop_toBottomOf="@id/email_til"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:id="@+id/pw_til"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/password_et"
-                        style="@style/TextInputLayout"
-                        android:hint="@string/password"
-                        android:maxLength="@integer/max_length_20"
-                        android:inputType="textPassword" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/forgot_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dp15"
-                    android:text="@string/forgot"
-                    android:textAppearance="@style/Semibold_black_18_text"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/text_13"
-                    app:layout_constraintTop_toBottomOf="@id/pw_til"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    />
 
                 <Button
                     android:id="@+id/login_btn"
@@ -133,7 +90,7 @@
                     android:layout_marginTop="@dimen/dp30"
                     android:layout_marginRight="@dimen/dp20"
                     android:text="@string/login"
-                    app:layout_constraintTop_toBottomOf="@id/forgot_tv"
+                    app:layout_constraintTop_toBottomOf="@id/contact_til"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     />

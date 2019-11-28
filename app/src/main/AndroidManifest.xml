@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.ui.login.LoginActivity"></activity>
+        <activity android:name=".view.ui.accountVerification.AccountVerificationActivity"/>
+        <activity android:name=".view.ui.login.LoginActivity"
+            android:windowSoftInputMode="adjustNothing"
+            />
         <activity android:name=".view.ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

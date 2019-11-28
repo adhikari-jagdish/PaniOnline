@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Pani Online</string>
 
+    <!--Toolbar-->
+    <string name="done">Done</string>
 
     <!--Welcome Screen-->
     <string name="enter_as_client">Enter as Client</string>
@@ -14,10 +16,16 @@
     <string name="let_get_started">Let\'s get Started</string>
     <string name="login_book">Login and book your water jar now.</string>
     <string name="email">Email</string>
+    <string name="contact_no">Mobile No.</string>
     <string name="password">Password</string>
     <string name="forgot">Forgot?</string>
-    <string name="login">Login</string>
+    <string name="login">Proceed</string>
     <string name="continue_with_facebook">Continue with Facebook</string>
     <string name="continue_with_google">Continue with Google</string>
     <string name="or">OR</string>
+
+    <!--Account Verification-->
+    <string name="enter_otp">Please verify your account by entering the 4-digit code sent to your registered mobile no.</string>
+    <string name="resend_code">Resend code</string>
+    <string name="verify">Verify</string>
 </resources>
