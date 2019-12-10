@@ -11,11 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.ui.accountVerification.AccountVerificationActivity"/>
-        <activity android:name=".view.ui.login.LoginActivity"
-            android:windowSoftInputMode="adjustNothing"
-            />
-        <activity android:name=".view.ui.splash.SplashActivity">
+        <activity android:name=".view.ui.user.UserHomeActivity"/>
+        <activity android:name=".view.ui.accountVerification.AccountVerificationActivity" />
+        <activity
+            android:name=".view.ui.login.LoginActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".view.ui.splash.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.ui.welcomeScreen.WelcomeScreen" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
 
 </manifest>
