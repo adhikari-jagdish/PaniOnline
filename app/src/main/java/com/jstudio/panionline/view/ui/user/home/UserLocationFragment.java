@@ -1,4 +1,4 @@
-package com.jstudio.panionline.view.ui.user;
+package com.jstudio.panionline.view.ui.user.home;
 
 import android.Manifest;
 import android.content.Context;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +25,13 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.FragmentUserLocationBinding;
+import com.jstudio.panionline.view.ui.user.home.adapter.HomeItemsAdapter;
 
 
 public class UserLocationFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mMap;
     private FragmentUserLocationBinding mBinding;
+    private HomeItemsAdapter mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,20 @@ public class UserLocationFragment extends Fragment implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.user_home_map);
         mapFragment.getMapAsync(this);
+        initUI();
     }
+
+    /**
+     * Initialize the UI first
+     */
+    private void initUI() {
+        //Init RecyclerView
+        mAdapter = new HomeItemsAdapter(getActivity());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mBinding.homeItemsRv.setLayoutManager(linearLayoutManager);
+        mBinding.homeItemsRv.setAdapter(mAdapter);
+    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

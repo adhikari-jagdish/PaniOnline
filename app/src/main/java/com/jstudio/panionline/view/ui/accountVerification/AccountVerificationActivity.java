@@ -10,8 +10,7 @@ import android.view.View;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityAccountVerificationBinding;
 import com.jstudio.panionline.view.base.BaseActivity;
-import com.jstudio.panionline.view.ui.login.LoginActivity;
-import com.jstudio.panionline.view.ui.user.UserHomeActivity;
+import com.jstudio.panionline.view.ui.user.home.UserHomeActivity;
 
 public class AccountVerificationActivity extends BaseActivity {
     private ActivityAccountVerificationBinding mBinding;

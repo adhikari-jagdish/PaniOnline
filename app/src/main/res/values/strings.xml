@@ -15,7 +15,7 @@
     <!--Login Screen -->
     <string name="signup">Sign up</string>
     <string name="let_get_started">Let\'s get Started</string>
-    <string name="login_book">Login and book your water jar now.</string>
+    <string name="login_book">Login/SignUp and book your water jar now.</string>
     <string name="email">Email</string>
     <string name="contact_no">Mobile No.</string>
     <string name="password">Password</string>
@@ -29,6 +29,13 @@
     <string name="enter_otp">Please verify your account by entering the 4-digit code sent to your registered mobile no.</string>
     <string name="resend_code">Resend code</string>
     <string name="verify">Verify</string>
+
+    <!--Home-->
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="bookings">Bookings</string>
+    <string name="cart">Cart</string>
+    <string name="bisleri">Bisleri</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

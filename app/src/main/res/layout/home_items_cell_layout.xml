@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:elevation="@dimen/dp5"
+        android:translationZ="@dimen/dp5"
+        app:cardCornerRadius="@dimen/dp5"
+        android:layout_marginStart="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp10"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp20">
+
+            <ImageView
+                android:id="@+id/img_bottle"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:src="@drawable/ic_wine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/txt_bottle_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bisleri"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_bottle"
+                android:layout_marginStart="@dimen/dp10"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
+

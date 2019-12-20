@@ -1,8 +1,6 @@
-package com.jstudio.panionline.view.ui.user;
+package com.jstudio.panionline.view.ui.user.home;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +24,13 @@ public class UserHomeActivity extends BaseActivity {
 
     public static void startUserHomeActivity(Context context) {
         Intent intent = new Intent(context, UserHomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(intent);
     }
 
 
     private void setUpBottomNav(){
+        mBinding.navigation.setItemIconTintList(null);
         bottomTab = new BottomTab().addFragmentActivity(this).addContainerId(R.id.frame_container)
                 .addFragment(new UserLocationFragment())
                 .build();
