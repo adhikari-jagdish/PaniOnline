@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+        android:id="@+id/items_card"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp10"
-        android:layout_marginBottom="@dimen/dp10"
+        android:layout_margin="@dimen/dp20"
         android:background="@color/white"
         android:elevation="@dimen/dp5"
         android:translationZ="@dimen/dp5"
@@ -21,73 +21,41 @@
                 android:id="@+id/img_bottle"
                 android:layout_width="@dimen/dp60"
                 android:layout_height="@dimen/dp70"
+                android:layout_marginTop="@dimen/dp20"
                 android:scaleType="fitXY"
                 android:src="@drawable/bisleri_bottle_img"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/txt_price" />
 
             <TextView
                 android:id="@+id/txt_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/color_3b5998"
-                android:padding="@dimen/dp8"
                 android:layout_marginStart="@dimen/dp10"
-                android:textColor="@color/white"
+                android:background="@color/color_01c3cc"
+                android:padding="@dimen/dp8"
                 android:text="INR 35"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_15"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_bottle_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp20"
                 android:paddingStart="@dimen/dp10"
                 android:paddingEnd="@dimen/dp10"
                 android:text="@string/bisleri"
                 android:textSize="@dimen/text_18"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@id/img_bottle"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txt_bottle_quantity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/dp8"
-                android:paddingEnd="@dimen/dp10"
-                android:text="@string/twenty_five_litres"
-                android:textSize="@dimen/text_14"
-                app:layout_constraintEnd_toStartOf="@id/txt_price"
-                app:layout_constraintTop_toBottomOf="@id/txt_bottle_title"
-                app:layout_constraintStart_toEndOf="@id/img_bottle"
-                />
-
-            <View
-                android:id="@+id/view_divider_first"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp2"
-                android:background="#c0c0c0"
-                app:layout_constraintTop_toBottomOf="@id/img_bottle"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@id/img_bottle" />
 
-            <TextView
-                android:id="@+id/txt_explore_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp10"
-                android:paddingStart="@dimen/dp10"
-                android:paddingEnd="@dimen/dp20"
-                android:paddingBottom="@dimen/dp10"
-                android:text="@string/explore_more"
-                android:textSize="@dimen/text_12"
-
-               app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toBottomOf="@id/view_divider_first" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -55,6 +55,9 @@
     <dimen name="dp80">80dp</dimen>
     <dimen name="dp88">88dp</dimen>
     <dimen name="dp90">90dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+    <dimen name="dp110">110dp</dimen>
+    <dimen name="dp130">130dp</dimen>
 
 
     <!--Text-->

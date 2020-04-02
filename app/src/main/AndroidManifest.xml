@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".view.ui.user.itemDetails.ItemDetails"/>
         <activity android:name=".view.ui.user.home.UserHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,16 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".view.ui.accountVerification.AccountVerificationActivity" />
         <activity
             android:name=".view.ui.login.LoginActivity"
             android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".view.ui.splash.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
-            >
-
-        </activity>
+        <activity
+            android:name=".view.ui.splash.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
         <activity android:name=".view.ui.welcomeScreen.WelcomeScreen" />
 
         <meta-data

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.user.itemDetails.ItemDetails">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_top_content"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar_layout_second" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/top_image"
+                android:layout_width="@dimen/dp130"
+                android:layout_height="@dimen/dp130"
+                android:layout_marginStart="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp20"
+                android:src="@drawable/bisleri_group_img"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="@dimen/dp5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <ImageView
+                android:id="@+id/img_like"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginEnd="@dimen/dp40"
+                android:background="@drawable/shape_oval_white"
+                android:padding="@dimen/dp12"
+                android:src="@drawable/ic_heart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+            <TextView
+                android:id="@+id/txt_like_counts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp2"
+                android:text="400"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@id/img_like"
+                app:layout_constraintEnd_toEndOf="@id/img_like"
+                app:layout_constraintTop_toBottomOf="@id/img_like" />
+
+            <ImageView
+                android:id="@+id/img_reviews"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp40"
+                android:background="@drawable/shape_oval_white"
+                android:padding="@dimen/dp12"
+                android:src="@drawable/ic_good_review"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_like_counts" />
+
+            <TextView
+                android:id="@+id/txt_review_counts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp2"
+                android:gravity="center_horizontal"
+                android:text="39"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@id/img_reviews"
+                app:layout_constraintStart_toStartOf="@id/img_reviews"
+                app:layout_constraintTop_toBottomOf="@id/img_reviews" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingStart="@dimen/dp50"
+            android:paddingTop="@dimen/dp30"
+            android:paddingEnd="@dimen/dp50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_top_content">
+
+            <TextView
+                android:id="@+id/txt_floor_number"
+                style="@style/SemiBold_black_17_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_circle"
+                android:paddingStart="@dimen/dp15"
+                android:paddingTop="@dimen/dp5"
+                android:paddingEnd="@dimen/dp15"
+                android:paddingBottom="@dimen/dp5"
+                android:text="3"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                style="@style/Regular_black_14_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp20"
+                android:text="@string/about_bisleri"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_floor_number" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_shop"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp40"
+                android:src="@drawable/ic_shop"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+            <TextView
+                android:id="@+id/txt_open_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="10am-08pm"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_shop" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_address"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp40"
+                android:src="@drawable/ic_map"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+            <TextView
+                android:id="@+id/txt_delivery_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="1.5 Km"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_shop" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_terms"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_marginTop="@dimen/dp40"
+                android:src="@drawable/ic_terms_conditions"
+                app:civ_border_color="@color/colorPrimary"
+                app:civ_border_width="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+            <TextView
+                android:id="@+id/txt_terms_conditions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:layout_marginEnd="@dimen/dp5"
+                android:text="T &amp; C"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_shop" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
