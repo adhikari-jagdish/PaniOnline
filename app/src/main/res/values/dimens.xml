@@ -58,6 +58,12 @@
     <dimen name="dp100">100dp</dimen>
     <dimen name="dp110">110dp</dimen>
     <dimen name="dp130">130dp</dimen>
+    <dimen name="dp150">150dp</dimen>
+    <dimen name="dp170">170dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+    <dimen name="dp300">300dp</dimen>
+    <dimen name="dp400">400dp</dimen>
+    <dimen name="dp500">500dp</dimen>
 
 
     <!--Text-->

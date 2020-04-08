@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/items_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginBottom="@dimen/dp3"
+        android:elevation="@dimen/dp5"
+        android:translationZ="@dimen/dp5"
+        app:cardCornerRadius="@dimen/dp5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dp20"
+            android:paddingTop="@dimen/dp20"
+            android:paddingEnd="@dimen/dp10"
+            android:paddingBottom="@dimen/dp15">
+
+            <TextView
+                android:id="@+id/txt_address"
+                style="@style/Regular_black_15_text"
+                android:layout_width="@dimen/dp200"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_address"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/right_three_dots"
+                android:layout_width="@dimen/dp20"
+                android:layout_height="@dimen/dp20"
+                android:layout_marginStart="@dimen/dp30"
+                android:src="@drawable/ic_three_dots_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_bottom_check"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginEnd="@dimen/dp10"
+                android:background="@drawable/shape_circle"
+                android:padding="@dimen/dp9"
+                android:layout_marginTop="@dimen/dp20"
+                android:src="@drawable/ic_tick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_address" />
+
+            <TextView
+                android:id="@+id/txt_delivery_address_tick"
+                style="@style/Regular_black_16_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp15"
+                android:layout_marginEnd="@dimen/dp20"
+                android:text="@string/delivery_address"
+                android:textColor="@color/color_F7F1F0"
+                app:layout_constraintBottom_toBottomOf="@id/img_bottom_check"
+                app:layout_constraintEnd_toStartOf="@id/img_bottom_check"
+                app:layout_constraintTop_toTopOf="@id/img_bottom_check" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

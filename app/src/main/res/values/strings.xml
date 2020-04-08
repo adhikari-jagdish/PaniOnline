@@ -41,7 +41,23 @@
     <string name="twenty_five_litres">(25 Litres)</string>
 
     <!--Description Page-->
-    <string name="about_bisleri">A symbol of goodness, trust and purity, Bisleri has been a household name for decades. A leader in its category, it is the most trusted brand of mineral water in India. Having a strong presence, with 125 operational plants (13 owned) and a strong distribution network of 3000 Distributors healthy mineral water to consumers for the last 50 years.</string>
+    <string name="about_bisleri">A symbol of goodness, trust and purity, Bisleri has been a household name for decades. A leader in its category, it is the most trusted brand of mineral water in India. Having a strong presence, with 125 operational plants (13 owned) and a strong distribution network of 3000 Distributors.</string>
+
+    <!--Checkout Page-->
+    <string name="delivery">Delivery</string>
+    <string name="payment">Payment</string>
+    <string name="checkout">Checkout</string>
+    <string name="total">Total :</string>
+    <string name="total_val">₹ 105.00</string>
+    <string name="confirm">Confirm</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="qty">Qty :</string>
+    <string name="bisleri_20">Bisleri (20 l)</string>
+    <string name="qty_one">Qty: 1</string>
+    <string name="proceed">Proceed</string>
+
+    <string name="sample_address">S-80, 4th Floor, Shakarpur, School Block, Laxminagar, Delhi</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

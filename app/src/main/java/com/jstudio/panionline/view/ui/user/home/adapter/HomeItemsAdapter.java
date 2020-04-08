@@ -16,7 +16,6 @@ import com.jstudio.panionline.view.ui.user.itemDetails.ItemDetails;
 public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.HomeItemViewHolder> {
     private Context mContext;
 
-
     public HomeItemsAdapter(Context mContext) {
         this.mContext = mContext;
     }

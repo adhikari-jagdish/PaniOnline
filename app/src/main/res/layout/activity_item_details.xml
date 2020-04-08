@@ -10,12 +10,13 @@
         tools:context=".view.ui.user.itemDetails.ItemDetails">
 
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_top_content"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:background="@color/colorPrimary"
-            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintDimensionRatio="15:10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

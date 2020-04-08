@@ -3,6 +3,7 @@ package com.jstudio.panionline.view.ui.user.itemDetails;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -10,6 +11,7 @@ import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityItemDetailsBinding;
 import com.jstudio.panionline.view.base.BaseActivity;
 import com.jstudio.panionline.view.ui.accountVerification.AccountVerificationActivity;
+import com.jstudio.panionline.view.ui.checkOut.DeliveryActivity;
 
 public class ItemDetails extends BaseActivity {
     private ActivityItemDetailsBinding mBinding;
@@ -19,6 +21,13 @@ public class ItemDetails extends BaseActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_item_details);
        setBackEnabled_Title(true, "Bisleri");
+
+       mBinding.imgLike.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               DeliveryActivity.startDeliveryActivity(ItemDetails.this);
+           }
+       });
     }
 
     /**

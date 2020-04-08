@@ -28,12 +28,36 @@
     <style name="Regular_black_18_text">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/text_18</item>
-        <item name="android:textColor">@color/color_5074BD</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Regular_greyish_18_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_18</item>
+        <item name="android:textColor">@color/color_8B8E8C</item>
     </style>
 
     <style name="Regular_black_14_text">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/text_14</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Regular_black_15_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Regular_black_16_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Regular_black_17_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_17</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
@@ -103,6 +127,26 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@drawable/primary_color_backround_rectangle_drawable</item>
         <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textAppearance">@style/Regular_black_18_text</item>
+    </style>
+
+    <style name="ConfirmButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/primary_color_backround_rectangle_drawable</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_15</item>
+        <item name="android:textAppearance">@style/Regular_black_18_text</item>
+    </style>
+
+    <style name="ProceedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/rectangle_drawable_colour_green</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">@dimen/text_15</item>
         <item name="android:textAppearance">@style/Regular_black_18_text</item>
     </style>
