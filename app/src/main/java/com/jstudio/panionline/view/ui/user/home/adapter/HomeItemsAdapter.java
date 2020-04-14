@@ -11,13 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.HomeItemsCellLayoutBinding;
+import com.jstudio.panionline.model.ProductListResponse;
 import com.jstudio.panionline.view.ui.user.itemDetails.ItemDetails;
+
+import java.util.List;
 
 public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.HomeItemViewHolder> {
     private Context mContext;
+    private List<ProductListResponse.DataBean> productList;
 
-    public HomeItemsAdapter(Context mContext) {
+    public HomeItemsAdapter(Context mContext, List<ProductListResponse.DataBean> products) {
         this.mContext = mContext;
+        this.productList = products;
     }
 
     @NonNull
@@ -29,12 +34,13 @@ public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.Home
 
     @Override
     public void onBindViewHolder(@NonNull HomeItemViewHolder holder, int position) {
-        holder.bind(position);
+        ProductListResponse.DataBean product = productList.get(position);
+        holder.binding.setProduct(product);
     }
 
     @Override
     public int getItemCount() {
-        return 6;
+        return productList.size();
     }
 
     public class HomeItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -45,11 +51,6 @@ public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.Home
             this.binding = itemView;
             this.binding.itemsCard.setOnClickListener(this);
         }
-
-        public void bind(int position) {
-
-        }
-
 
         @Override
         public void onClick(View v) {

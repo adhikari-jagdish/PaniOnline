@@ -32,7 +32,7 @@ public class OrderSummaryItemsAdapter extends RecyclerView.Adapter<OrderSummaryI
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 2;
     }
 
     public class OrderSummaryViewHolder extends RecyclerView.ViewHolder {

@@ -34,7 +34,7 @@
     <style name="Regular_greyish_18_text">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/text_18</item>
-        <item name="android:textColor">@color/color_8B8E8C</item>
+        <item name="android:textColor">@color/color_616661</item>
     </style>
 
     <style name="Regular_black_14_text">
@@ -73,6 +73,12 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="Semibold_white_40_text">
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">@dimen/text_40</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
     <style name="Semibold_white_17_text">
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">@dimen/text_17</item>
@@ -83,6 +89,16 @@
         <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">@dimen/text_17</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="payment_methods_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingTop">@dimen/dp20</item>
+        <item name="android:layout_marginStart">@dimen/dp20</item>
+       <item name="android:paddingBottom">@dimen/dp20</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="OTPText">
@@ -99,6 +115,11 @@
 
     </style>
 
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_F7F1F0</item>
+    </style>
 
 
     <!--TextInpur Layout Formating-->

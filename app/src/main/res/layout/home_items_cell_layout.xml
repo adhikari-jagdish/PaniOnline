@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="product"
+            type="com.jstudio.panionline.model.ProductListResponse.DataBean"/>
+    </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/items_card"
@@ -23,7 +30,7 @@
                 android:layout_height="@dimen/dp70"
                 android:layout_marginTop="@dimen/dp20"
                 android:scaleType="fitXY"
-                android:src="@drawable/bisleri_bottle_img"
+                bind:productimageurl="@{product.productImageUrl}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_price" />
@@ -35,7 +42,7 @@
                 android:layout_marginStart="@dimen/dp10"
                 android:background="@color/color_01c3cc"
                 android:padding="@dimen/dp8"
-                android:text="INR 35"
+                android:text="@{`INR `+product.productPrice}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_15"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +56,7 @@
                 android:paddingBottom="@dimen/dp20"
                 android:paddingStart="@dimen/dp10"
                 android:paddingEnd="@dimen/dp10"
-                android:text="@string/bisleri"
+                android:text="@{product.productName}"
                 android:textSize="@dimen/text_18"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -55,7 +55,13 @@
     <string name="qty">Qty :</string>
     <string name="bisleri_20">Bisleri (20 l)</string>
     <string name="qty_one">Qty: 1</string>
+    <string name="choose">Choose</string>
     <string name="proceed">Proceed</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="wallet_upi">Wallet / UPI</string>
+    <string name="credit_debit">Credit / Debit / ATM Card</string>
+    <string name="cash_on_delivery">Cash on Delivery</string>
+
 
     <string name="sample_address">S-80, 4th Floor, Shakarpur, School Block, Laxminagar, Delhi</string>
 

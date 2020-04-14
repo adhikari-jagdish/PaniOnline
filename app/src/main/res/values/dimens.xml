@@ -82,5 +82,7 @@
     <dimen name="text_28">28sp</dimen>
     <dimen name="text_29">29sp</dimen>
     <dimen name="text_30">30sp</dimen>
+    <dimen name="text_35">35sp</dimen>
+    <dimen name="text_40">40sp</dimen>
 
 </resources>
