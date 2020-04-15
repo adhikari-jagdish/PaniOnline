@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.gmail.samehadar.iosdialog.IOSDialog;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.FragmentUserLocationBinding;
 import com.jstudio.panionline.model.ProductListResponse;
@@ -31,6 +32,7 @@ public class UserLocationFragment extends Fragment {
     private ViewModelProvider.Factory viewModelFactory;
     private final String LOG = getClass().getSimpleName();
     private ArrayList<ProductListResponse.DataBean> products = new ArrayList<>();
+    private IOSDialog dialog0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,10 @@ public class UserLocationFragment extends Fragment {
         /*mProductListVM = new ViewModelProvider(requireActivity().getViewModelStore(), viewModelFactory)
                 .get(ProductListViewModel.class);*/
 
-
+      dialog0 = new IOSDialog.Builder(getActivity())
+                .setTitleColorRes(R.color.gray)
+                .build();
+      dialog0.show();
     }
 
     @Override
@@ -53,6 +58,7 @@ public class UserLocationFragment extends Fragment {
             @Override
             public void onChanged(ProductListResponse productListResponse) {
                 if (productListResponse != null) {
+                    dialog0.dismiss();
                     products.clear();
                     products.addAll(productListResponse.getData());
                     mAdapter.notifyDataSetChanged();

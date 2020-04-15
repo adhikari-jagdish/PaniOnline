@@ -17,7 +17,9 @@
         <activity android:name=".view.ui.checkOut.PaymentActivity"/>
         <activity android:name=".view.ui.checkOut.DeliveryActivity" />
         <activity android:name=".view.ui.user.itemDetails.ItemDetails" />
-        <activity android:name=".view.ui.user.home.UserHomeActivity">
+        <activity
+            android:launchMode="singleTop"
+            android:name=".view.ui.user.home.UserHomeActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
