@@ -50,6 +50,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Regular_black_12_text">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Regular_black_15_text">
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/text_15</item>

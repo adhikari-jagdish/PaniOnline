@@ -12,6 +12,8 @@ public interface CartDataSource {
 
     Single<Integer> countCart(int userId);
 
+    Single<Integer> sumPrice(int userId);
+
     Completable insertOrReplaceAll(CartItem... cartItems);
 
     Single<Integer> updateCart(CartItem cartItem);

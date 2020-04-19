@@ -3,7 +3,6 @@ package com.jstudio.panionline.view.ui.user.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
@@ -19,6 +18,7 @@ import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.LocalCartDataSource;
 import com.jstudio.panionline.utility.uiUtils.BottomTab;
 import com.jstudio.panionline.view.base.BaseActivity;
+import com.jstudio.panionline.view.ui.cartItems.CartItemsFragment;
 import com.jstudio.panionline.view.ui.common.SettingsFragment;
 
 import io.reactivex.SingleObserver;
@@ -31,6 +31,7 @@ public class UserHomeActivity extends BaseActivity {
     private BottomTab bottomTab;
     final Fragment fragmentHome = new UserLocationFragment();
     final Fragment fragmentSettings = new SettingsFragment();
+    final Fragment fragmentCart = new CartItemsFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragmentHome;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;
@@ -55,8 +56,9 @@ public class UserHomeActivity extends BaseActivity {
     private void setUpBottomNav() {
         mBinding.navigation.setItemIconTintList(null);
 
-        fm.beginTransaction().add(R.id.frame_container, fragmentSettings, "2").hide(fragmentSettings).commit();
         fm.beginTransaction().add(R.id.frame_container, fragmentHome, "1").commit();
+        fm.beginTransaction().add(R.id.frame_container, fragmentSettings, "2").hide(fragmentSettings).commit();
+        fm.beginTransaction().add(R.id.frame_container, fragmentCart, "3").hide(fragmentCart).commit();
 
         mOnNavigationItemSelectedListener
                 = menuItem -> {
@@ -71,6 +73,11 @@ public class UserHomeActivity extends BaseActivity {
                     fm.beginTransaction().hide(active).show(fragmentSettings).commit();
                     active = fragmentSettings;
                     return true;
+
+                case R.id.nav_cart:
+                    fm.beginTransaction().hide(active).show(fragmentCart).commit();
+                    active = fragmentCart;
+                    break;
             }
             return false;
         };
@@ -98,7 +105,7 @@ public class UserHomeActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(Integer integer) {
-                        Log.d(TAG, "INteger====>" + integer);
+
                         badgeDrawable.setNumber(integer);
                     }
 

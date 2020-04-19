@@ -20,12 +20,12 @@
         <activity
             android:launchMode="singleTop"
             android:name=".view.ui.user.home.UserHomeActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".view.ui.accountVerification.AccountVerificationActivity" />
         <activity
@@ -33,7 +33,7 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".view.ui.splash.SplashActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
 
         </activity>
         <activity android:name=".view.ui.welcomeScreen.WelcomeScreen" />

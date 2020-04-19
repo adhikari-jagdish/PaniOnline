@@ -54,17 +54,14 @@ public class UserLocationFragment extends Fragment {
     }
 
     private void observeViewModel(ProductListViewModel viewModel) {
-        viewModel.getProductList().observe(getViewLifecycleOwner(), new Observer<ProductListResponse>() {
-            @Override
-            public void onChanged(ProductListResponse productListResponse) {
-                if (productListResponse != null) {
-                    dialog0.dismiss();
-                    products.clear();
-                    products.addAll(productListResponse.getData());
-                    mAdapter.notifyDataSetChanged();
-                }
-
+        viewModel.getProductList().observe(getViewLifecycleOwner(), productListResponse -> {
+            if (productListResponse != null) {
+                dialog0.dismiss();
+                products.clear();
+                products.addAll(productListResponse.getData());
+                mAdapter.notifyDataSetChanged();
             }
+
         });
 
     }

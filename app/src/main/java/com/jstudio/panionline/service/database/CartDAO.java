@@ -22,6 +22,9 @@ public interface CartDAO {
     @Query("SELECT COUNT(*) FROM Cart WHERE userId = :userId")
     Single<Integer> countCart(int userId);
 
+    @Query("SELECT SUM(productPrice*productQuantity) from Cart WHERE userId = :userId")
+    Single<Integer> sumCart(int userId);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE) //If productId conflict, will update info
     Completable insertOrReplaceAll (CartItem... cartItems);
 

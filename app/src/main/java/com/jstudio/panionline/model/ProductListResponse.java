@@ -1,5 +1,7 @@
 package com.jstudio.panionline.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -46,7 +48,7 @@ public class ProductListResponse {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Parcelable {
         /**
          * _id : 5e95189222131e18700b5692
          * productId : 102
@@ -67,6 +69,46 @@ public class ProductListResponse {
         private int productPrice;
         private int productLikes;
         private int productReviews;
+
+        protected DataBean(Parcel in) {
+            _id = in.readString();
+            productId = in.readInt();
+            productName = in.readString();
+            productImageUrl = in.readString();
+            productDescription = in.readString();
+            productPrice = in.readInt();
+            productLikes = in.readInt();
+            productReviews = in.readInt();
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(_id);
+            dest.writeInt(productId);
+            dest.writeString(productName);
+            dest.writeString(productImageUrl);
+            dest.writeString(productDescription);
+            dest.writeInt(productPrice);
+            dest.writeInt(productLikes);
+            dest.writeInt(productReviews);
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        public static final Creator<DataBean> CREATOR = new Creator<DataBean>() {
+            @Override
+            public DataBean createFromParcel(Parcel in) {
+                return new DataBean(in);
+            }
+
+            @Override
+            public DataBean[] newArray(int size) {
+                return new DataBean[size];
+            }
+        };
 
         public String get_id() {
             return _id;

@@ -19,6 +19,7 @@ import java.util.List;
 public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.HomeItemViewHolder> {
     private Context mContext;
     private List<ProductListResponse.DataBean> productList;
+    private ProductListResponse.DataBean product;
 
     public HomeItemsAdapter(Context mContext, List<ProductListResponse.DataBean> products) {
         this.mContext = mContext;
@@ -34,7 +35,7 @@ public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.Home
 
     @Override
     public void onBindViewHolder(@NonNull HomeItemViewHolder holder, int position) {
-        ProductListResponse.DataBean product = productList.get(position);
+        product = productList.get(position);
         holder.binding.setProduct(product);
     }
 
@@ -57,7 +58,7 @@ public class HomeItemsAdapter extends RecyclerView.Adapter<HomeItemsAdapter.Home
             if (v != null) {
                 switch (v.getId()) {
                     case R.id.items_card:
-                        ItemDetails.startItemDetailsActivity(mContext);
+                        ItemDetails.startItemDetailsActivity(mContext, productList.get(getAdapterPosition()));
                         break;
                 }
             }

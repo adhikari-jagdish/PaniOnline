@@ -27,6 +27,11 @@ public class LocalCartDataSource implements CartDataSource {
     }
 
     @Override
+    public Single<Integer> sumPrice(int userId) {
+        return cartDAO.sumCart(userId);
+    }
+
+    @Override
     public Completable insertOrReplaceAll(CartItem... cartItems) {
         return cartDAO.insertOrReplaceAll(cartItems);
     }

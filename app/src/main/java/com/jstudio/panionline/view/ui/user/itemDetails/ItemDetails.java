@@ -10,10 +10,12 @@ import androidx.databinding.DataBindingUtil;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityItemDetailsBinding;
+import com.jstudio.panionline.model.ProductListResponse;
 import com.jstudio.panionline.service.database.CartDataSource;
 import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.LocalCartDataSource;
 import com.jstudio.panionline.utility.CommonMethods;
+import com.jstudio.panionline.utility.constant.AppConstant;
 import com.jstudio.panionline.view.base.BaseActivity;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -24,16 +26,32 @@ public class ItemDetails extends BaseActivity {
     private ActivityItemDetailsBinding mBinding;
     private CompositeDisposable compositeDisposable;
     private CartDataSource cartDataSource;
+    private ProductListResponse.DataBean products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_item_details);
-        setBackEnabled_Title(true, "Bisleri");
+        Intent intent = getIntent();
+        if (intent.getExtras() != null) {
+            products = intent.getParcelableExtra(AppConstant.PRODUCT_DETAILS);
+        }
+        setBackEnabled_Title(true, products.getProductName());
+        fillData();
 
         mBinding.cartAddIcon.setOnClickListener(this);
         compositeDisposable = new CompositeDisposable();
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(this).cartDAO());
+    }
+
+    /**
+     * Method to Add Content to Layout
+     */
+    private void fillData() {
+        CommonMethods.loadImage(mBinding.topImage, products.getProductImageUrl());
+        mBinding.txtLikeCounts.setText(String.valueOf(products.getProductLikes()));
+        mBinding.txtReviewCounts.setText(String.valueOf(products.getProductReviews()));
+        mBinding.txtDescription.setText(products.getProductDescription());
     }
 
     @Override
@@ -47,12 +65,14 @@ public class ItemDetails extends BaseActivity {
      *
      * @param context context of the current activity
      */
-    public static void startItemDetailsActivity(Context context) {
-        context.startActivity(createIntent(context));
+    public static void startItemDetailsActivity(Context context, ProductListResponse.DataBean productDetails) {
+        context.startActivity(createIntent(context, productDetails));
     }
 
-    public static Intent createIntent(Context context) {
-        return new Intent(context, ItemDetails.class);
+    private static Intent createIntent(Context context, ProductListResponse.DataBean productDetails) {
+        Intent intent = new Intent(context, ItemDetails.class);
+        intent.putExtra(AppConstant.PRODUCT_DETAILS, productDetails);
+        return intent;
     }
 
     @Override
@@ -64,9 +84,9 @@ public class ItemDetails extends BaseActivity {
 
                     compositeDisposable.add(
                             cartDataSource.insertOrReplaceAll(CommonMethods.addItemsToCart(100,
-                                    14, "Aquafina",
-                                    "https://www.coca-colaindia.com/content/dam/journey/in/en/private/our-brands/Kinley%20Water/India-utl.jpg",
-                                    75))
+                                    products.getProductId(), products.getProductName(),
+                                    products.getProductImageUrl(),
+                                    products.getProductPrice()))
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(() -> {
@@ -78,10 +98,7 @@ public class ItemDetails extends BaseActivity {
                                             })
 
                     );
-
                     break;
-
-
             }
         }
     }
