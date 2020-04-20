@@ -58,15 +58,15 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
         holder.setListener((view, position1, isDecrease, isDelete) -> {
             if (!isDelete) {
                 if (isDecrease) {
-                    if (cartItemList.get(position).getProductQuantity() > 1)
-                        cartItemList.get(position).setProductQuantity(cartItemList.get(position).getProductQuantity() - 1);
+                    if (cartItemList.get(position1).getProductQuantity() > 1)
+                        cartItemList.get(position1).setProductQuantity(cartItemList.get(position1).getProductQuantity() - 1);
                 } else {
-                    if (cartItemList.get(position).getProductQuantity() < 99)
-                        cartItemList.get(position).setProductQuantity(cartItemList.get(position).getProductQuantity() + 1);
+                    if (cartItemList.get(position1).getProductQuantity() < 99)
+                        cartItemList.get(position1).setProductQuantity(cartItemList.get(position1).getProductQuantity() + 1);
                 }
 
                 //Update Cart
-                cartDataSource.updateCart(cartItemList.get(position))
+                cartDataSource.updateCart(cartItemList.get(position1))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new SingleObserver<Integer>() {
@@ -77,7 +77,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
 
                             @Override
                             public void onSuccess(Integer integer) {
-                                holder.binding.txtCartItemsVal.setText(String.valueOf(cartItemList.get(position).getProductQuantity()));
+                                holder.binding.txtCartItemsVal.setText(String.valueOf(cartItemList.get(position1).getProductQuantity()));
                                 EventBus.getDefault().postSticky(new CalculatePriceEvent());
                             }
 
@@ -87,7 +87,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
                             }
                         });
             } else {
-                cartDataSource.deleteCart(cartItemList.get(position))
+                cartDataSource.deleteCart(cartItemList.get(position1))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new SingleObserver<Integer>() {
@@ -98,7 +98,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
 
                             @Override
                             public void onSuccess(Integer integer) {
-                                    notifyItemRemoved(position);
+                                    notifyItemRemoved(holder.getAdapterPosition());
                                     EventBus.getDefault().postSticky(new CalculatePriceEvent());
                             }
 
@@ -107,7 +107,6 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
                                 Toast.makeText(context, "[DELETE_CART]" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
-
             }
         });
 

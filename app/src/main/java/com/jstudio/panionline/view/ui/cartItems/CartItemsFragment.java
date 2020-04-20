@@ -1,18 +1,20 @@
 package com.jstudio.panionline.view.ui.cartItems;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.FragmentCartItemsBinding;
 import com.jstudio.panionline.model.eventbus.CalculatePriceEvent;
-import com.jstudio.panionline.model.eventbus.SendTotalAmountEvent;
 import com.jstudio.panionline.service.database.CartDataSource;
 import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.CartItem;
@@ -37,19 +39,30 @@ import io.reactivex.schedulers.Schedulers;
 
 public class CartItemsFragment extends BaseFragment {
     private FragmentCartItemsBinding mbinding;
-    CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private CartDataSource cartDataSource;
     private List<CartItem> cartItemList = new ArrayList<>();
+    private CartItemsAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         mbinding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart_items, container, false);
+        return mbinding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         init();
         initView();
+        super.onViewCreated(view, savedInstanceState);
+    }
 
-        return mbinding.getRoot();
+    @Override
+    public void onResume() {
+        super.onResume();
+        getAllItemsInCart();
     }
 
     @Override
@@ -61,13 +74,20 @@ public class CartItemsFragment extends BaseFragment {
     @Override
     public void onStop() {
         EventBus.getDefault().unregister(this);
+        compositeDisposable.clear();
         super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void calculatePrice(CalculatePriceEvent event) {
         if (event != null) {
-            calculateTotalPrice();
+            //calculateTotalPrice();
         }
     }
 
@@ -78,23 +98,19 @@ public class CartItemsFragment extends BaseFragment {
 
         //Init the recyclerview
         mbinding.cartListRv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mbinding.cartListRv.setAdapter(new CartItemsAdapter(getActivity(), cartItemList));
+        mAdapter = new CartItemsAdapter(getActivity(), cartItemList);
+        mbinding.cartListRv.setAdapter(mAdapter);
 
-        mbinding.btnConfirmCart.setOnClickListener(this);
+        mbinding.btnProceedCheckout.setOnClickListener(this);
     }
 
-    @Override
-    public void onDestroy() {
-        compositeDisposable.clear();
-        super.onDestroy();
-    }
 
     /**
      * Initialize the data components and functionalities
      */
     private void init() {
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(getActivity()).cartDAO());
-        getAllItemsInCart();
+
     }
 
     /**
@@ -106,13 +122,17 @@ public class CartItemsFragment extends BaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(cartItems -> {
                     if (cartItems.isEmpty()) {
-                        mbinding.btnConfirmCart.setText(getString(R.string.empty_cart));
-                        mbinding.btnConfirmCart.setEnabled(false);
+                       mbinding.clBottom.setVisibility(View.INVISIBLE);
+                        mbinding.cartListRv.setVisibility(View.INVISIBLE);
+                        mbinding.txtNoItemsInCart.setVisibility(View.VISIBLE);
                     } else {
+                        Toast.makeText(getActivity(), "[GET CART_ITEMS_CALLED]", Toast.LENGTH_SHORT).show();
                         cartItemList.clear();
                         cartItemList.addAll(cartItems);
-                        mbinding.btnConfirmCart.setText(getString(R.string.proceed));
-                        mbinding.btnConfirmCart.setEnabled(true);
+                        mAdapter.notifyDataSetChanged();
+                        mbinding.clBottom.setVisibility(View.VISIBLE);
+                        mbinding.cartListRv.setVisibility(View.VISIBLE);
+                        mbinding.txtNoItemsInCart.setVisibility(View.INVISIBLE);
                     }
                 }, throwable -> {
                     Toast.makeText(getActivity(), "[GET CART]" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
@@ -136,6 +156,7 @@ public class CartItemsFragment extends BaseFragment {
 
                     @Override
                     public void onSuccess(Integer integer) {
+                        Log.d("CalCulate Total==>", "integer" + integer);
                        /* if (integer <= 0) {
                             mbinding.btnConfirmCart.setText(getString(R.string.empty_cart));
                             mbinding.btnConfirmCart.setEnabled(false);
@@ -161,8 +182,8 @@ public class CartItemsFragment extends BaseFragment {
         if (v != null) {
             super.onClick(v);
             switch (v.getId()) {
-                case R.id.btn_confirm_cart:
-                    EventBus.getDefault().postSticky(new SendTotalAmountEvent(mbinding.txtTotalVal.getText().toString()));
+                case R.id.btn_proceed_checkout:
+                    // EventBus.getDefault().postSticky(new SendTotalAmountEvent(mbinding.txtTotalVal.getText().toString()));
                     DeliveryActivity.startDeliveryActivity(getActivity());
                     break;
             }

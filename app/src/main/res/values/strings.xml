@@ -58,11 +58,13 @@
     <string name="qty_one">Qty: 1</string>
     <string name="choose">Choose</string>
     <string name="proceed">Proceed</string>
+    <string name="add_to_cart">Add to cart</string>
     <string name="payment_method">Payment Method</string>
     <string name="wallet_upi">Wallet / UPI</string>
     <string name="credit_debit">Credit / Debit / ATM Card</string>
     <string name="cash_on_delivery">Cash on Delivery</string>
     <string name="empty_cart">Cart Empty</string>
+    <string name="item_added_to_cart">Added to Cart</string>
 
 
     <string name="sample_address">S-80, 4th Floor, Shakarpur, School Block, Laxminagar, Delhi</string>

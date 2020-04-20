@@ -3,6 +3,7 @@ package com.jstudio.panionline.view.ui.user.itemDetails;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -18,8 +19,10 @@ import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.utility.constant.AppConstant;
 import com.jstudio.panionline.view.base.BaseActivity;
 
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class ItemDetails extends BaseActivity {
@@ -27,6 +30,7 @@ public class ItemDetails extends BaseActivity {
     private CompositeDisposable compositeDisposable;
     private CartDataSource cartDataSource;
     private ProductListResponse.DataBean products;
+    private final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +41,24 @@ public class ItemDetails extends BaseActivity {
             products = intent.getParcelableExtra(AppConstant.PRODUCT_DETAILS);
         }
         setBackEnabled_Title(true, products.getProductName());
+
+        init();
+    }
+
+    /**
+     * Init method called first
+     */
+    private void init() {
         fillData();
 
-        mBinding.cartAddIcon.setOnClickListener(this);
+        mBinding.btnAddToCart.setOnClickListener(this);
+
         compositeDisposable = new CompositeDisposable();
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(this).cartDAO());
+
+        checkIfItemsExistsInCart();
     }
+
 
     /**
      * Method to Add Content to Layout
@@ -54,10 +70,42 @@ public class ItemDetails extends BaseActivity {
         mBinding.txtDescription.setText(products.getProductDescription());
     }
 
+    private void checkIfItemsExistsInCart() {
+        cartDataSource.getProductQuantity(products.getProductId())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Integer integer) {
+                        if (integer < 1) {
+                            mBinding.btnAddToCart.setText(getString(R.string.item_added_to_cart));
+                            mBinding.btnAddToCart.setEnabled(false);
+                        }
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "Product Error++++" + e.getMessage());
+                    }
+                });
+    }
+
     @Override
     protected void onStop() {
-        super.onStop();
         compositeDisposable.clear();
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
     }
 
     /**
@@ -80,8 +128,7 @@ public class ItemDetails extends BaseActivity {
         if (v != null) {
             super.onClick(v);
             switch (v.getId()) {
-                case R.id.cart_add_icon:
-
+                case R.id.btn_add_to_cart:
                     compositeDisposable.add(
                             cartDataSource.insertOrReplaceAll(CommonMethods.addItemsToCart(100,
                                     products.getProductId(), products.getProductName(),
@@ -90,7 +137,9 @@ public class ItemDetails extends BaseActivity {
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(() -> {
-                                                Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                                                //Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                                                mBinding.btnAddToCart.setText(getString(R.string.item_added_to_cart));
+                                                mBinding.btnAddToCart.setEnabled(false);
                                             },
 
                                             throwable -> {

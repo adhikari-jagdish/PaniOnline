@@ -22,6 +22,9 @@ public interface CartDAO {
     @Query("SELECT COUNT(*) FROM Cart WHERE userId = :userId")
     Single<Integer> countCart(int userId);
 
+    @Query("SELECT productQuantity FROM Cart WHERE productId = :productId")
+    Single<Integer> getProductQuantity(int productId);
+
     @Query("SELECT SUM(productPrice*productQuantity) from Cart WHERE userId = :userId")
     Single<Integer> sumCart(int userId);
 

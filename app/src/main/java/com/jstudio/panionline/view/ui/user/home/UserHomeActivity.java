@@ -77,7 +77,7 @@ public class UserHomeActivity extends BaseActivity {
                 case R.id.nav_cart:
                     fm.beginTransaction().hide(active).show(fragmentCart).commit();
                     active = fragmentCart;
-                    break;
+                    return true;
             }
             return false;
         };

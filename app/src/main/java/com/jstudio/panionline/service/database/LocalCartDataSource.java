@@ -2,8 +2,6 @@ package com.jstudio.panionline.service.database;
 
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
@@ -24,6 +22,11 @@ public class LocalCartDataSource implements CartDataSource {
     @Override
     public Single<Integer> countCart(int userId) {
         return cartDAO.countCart(userId);
+    }
+
+    @Override
+    public Single<Integer> getProductQuantity(int productId) {
+        return cartDAO.getProductQuantity(productId);
     }
 
     @Override
