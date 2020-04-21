@@ -4,8 +4,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        >
+        android:background="@color/colorPrimary"
+        android:layout_height="?android:attr/actionBarSize">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,8 +24,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/dp20"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/dp20">
 
                         <ImageView
                             android:id="@+id/toolbar_back_image"
@@ -33,23 +33,22 @@
                             android:layout_height="@dimen/dp30"
                             android:layout_gravity="center_vertical"
                             android:paddingLeft="@dimen/dp5"
-                            android:visibility="visible"
                             android:paddingRight="@dimen/dp8"
                             android:paddingBottom="@dimen/dp5"
                             android:src="@drawable/ic_button_left"
-                            />
+                            android:visibility="visible" />
 
                         <TextView
                             android:id="@+id/title_tv"
+                            style="@style/Semibold_white_17_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
                             android:layout_marginStart="@dimen/dp10"
+                            android:layout_marginEnd="@dimen/dp5"
                             android:gravity="center"
                             android:textAllCaps="true"
-                            android:layout_gravity="center_vertical"
-                            style="@style/Semibold_white_17_text"
-                            android:visibility="visible"
-                            android:layout_marginEnd="@dimen/dp5" />
+                            android:visibility="visible" />
 
                         <View
                             android:layout_width="0dp"
@@ -59,38 +58,51 @@
 
                         <TextView
                             android:id="@+id/right_tv"
+                            style="@style/SemiBold_black_17_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_vertical"
                             android:padding="@dimen/dp10"
-                            style="@style/SemiBold_black_17_text"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/text_15"
                             android:visibility="gone" />
 
-                        <TextView
-                            android:id="@+id/toolbar_right_tv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:layout_marginRight="@dimen/dp5"
-                            android:gravity="center_vertical"
-                            android:padding="@dimen/dp5"
-                            android:text="@string/done"
-                            android:textColor="@color/colorPrimaryDark"
-                            android:textSize="@dimen/text_14"
-                            android:visibility="gone" />
+                      <FrameLayout
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:clipToPadding="false"
+                          android:layout_marginEnd="@dimen/dp10"
+                          android:focusable="true">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:orientation="horizontal"
-                            android:visibility="gone"
-                            android:id="@+id/right_icon_llyt">
+                          <ImageView
+                              android:id="@+id/toolbar_right_img"
+                              android:layout_width="@dimen/dp35"
+                              android:layout_height="@dimen/dp35"
+                              android:layout_gravity="end"
+                              android:gravity="center_vertical"
+                              android:padding="@dimen/dp5"
+                              android:layout_marginEnd="@dimen/dp10"
+                              android:src="@drawable/ic_item_cart_white"
+                              android:textColor="@color/colorPrimaryDark"
+                              android:textSize="@dimen/text_14"
+                              />
 
-                        </LinearLayout>
+                          <TextView
+                              android:id="@+id/cart_badge"
+                              android:layout_width="@dimen/dp20"
+                              android:layout_height="@dimen/dp20"
+                              android:layout_gravity="end|top"
+                              android:background="@drawable/badge_background"
+                              android:gravity="center"
+                              android:padding="3dp"
+                              android:textColor="@android:color/white"
+                              android:textSize="@dimen/text_12"/>
+
+
+                      </FrameLayout>
+
+
                     </LinearLayout>
                 </FrameLayout>
             </RelativeLayout>

@@ -12,12 +12,17 @@ import androidx.databinding.DataBindingUtil;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityItemDetailsBinding;
 import com.jstudio.panionline.model.ProductListResponse;
+import com.jstudio.panionline.model.eventbus.SendCartItemsCountEvent;
 import com.jstudio.panionline.service.database.CartDataSource;
 import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.LocalCartDataSource;
 import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.utility.constant.AppConstant;
 import com.jstudio.panionline.view.base.BaseActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -40,10 +45,13 @@ public class ItemDetails extends BaseActivity {
         if (intent.getExtras() != null) {
             products = intent.getParcelableExtra(AppConstant.PRODUCT_DETAILS);
         }
-        setBackEnabled_Title(true, products.getProductName());
+        setBackEnabled_Title(true, products.getProductName(), true);
+
+        CommonMethods.countItemsInCart(this, 100);
 
         init();
     }
+
 
     /**
      * Init method called first
@@ -83,22 +91,29 @@ public class ItemDetails extends BaseActivity {
                     @Override
                     public void onSuccess(Integer integer) {
                         if (integer < 1) {
-                            mBinding.btnAddToCart.setText(getString(R.string.item_added_to_cart));
-                            mBinding.btnAddToCart.setEnabled(false);
+                            mBinding.btnAddToCart.setVisibility(View.INVISIBLE);
+                            mBinding.btnAddedToCart.setVisibility(View.VISIBLE);
                         }
 
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d(TAG, "Product Error++++" + e.getMessage());
+                        Log.d(TAG, "Item Doesnot Exits++++" + e.getMessage());
                     }
                 });
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected void onStop() {
         compositeDisposable.clear();
+        EventBus.getDefault().unregister(this);
         super.onStop();
     }
 
@@ -106,6 +121,11 @@ public class ItemDetails extends BaseActivity {
     protected void onDestroy() {
         compositeDisposable.dispose();
         super.onDestroy();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getCartItemsCount(SendCartItemsCountEvent itemsCountEvent) {
+        setValuetoBadge(itemsCountEvent.getmCartItemsCount());
     }
 
     /**
@@ -131,19 +151,20 @@ public class ItemDetails extends BaseActivity {
                 case R.id.btn_add_to_cart:
                     compositeDisposable.add(
                             cartDataSource.insertOrReplaceAll(CommonMethods.addItemsToCart(100,
-                                    products.getProductId(), products.getProductName(),
+                                    products.getProductId(), 1,  products.getProductName(),
                                     products.getProductImageUrl(),
                                     products.getProductPrice()))
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(() -> {
-                                                //Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
-                                                mBinding.btnAddToCart.setText(getString(R.string.item_added_to_cart));
-                                                mBinding.btnAddToCart.setEnabled(false);
+                                                Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                                                mBinding.btnAddToCart.setVisibility(View.INVISIBLE);
+                                                mBinding.btnAddedToCart.setVisibility(View.VISIBLE);
+                                                 CommonMethods.countItemsInCart(this, 100);
                                             },
 
                                             throwable -> {
-                                                Toast.makeText(this, "[ADD CART]" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Log.d(TAG, "[ADD CART]" + throwable.getMessage());
                                             })
 
                     );

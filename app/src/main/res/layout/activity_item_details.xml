@@ -110,6 +110,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_added_to_cart"
+                style="@style/ButtonTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp20"
+                android:enabled="false"
+                android:layoutDirection="rtl"
+                android:padding="@dimen/dp13"
+                android:text="@string/item_added_to_cart"
+                android:visibility="invisible"
+                app:cornerRadius="@dimen/dp10"
+                app:icon="@drawable/ic_tick"
+                app:iconPadding="@dimen/dp10"
+                app:iconSize="@dimen/dp20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/txt_floor_number"
                 style="@style/SemiBold_black_17_text"
@@ -127,14 +145,15 @@
                 app:layout_constraintTop_toTopOf="@id/btn_add_to_cart" />
 
             <ScrollView
+                android:id="@+id/sv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp20"
                 android:layout_marginBottom="@dimen/dp20"
                 app:layout_constraintBottom_toTopOf="@id/img_address"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_floor_number">
+                app:layout_constraintTop_toBottomOf="@id/btn_add_to_cart">
 
                 <TextView
                     android:id="@+id/txt_description"

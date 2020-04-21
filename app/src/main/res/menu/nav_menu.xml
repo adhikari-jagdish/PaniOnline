@@ -17,9 +17,9 @@
         android:title="@string/bookings" />
 
     <item
-        android:id="@+id/nav_cart"
-        android:icon="@drawable/ic_cart"
-        android:title="@string/cart" />
+        android:id="@+id/nav_notification"
+        android:icon="@drawable/ic_bell"
+        android:title="@string/notifications" />
 
 
 </menu>

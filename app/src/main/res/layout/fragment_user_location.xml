@@ -34,7 +34,6 @@
             android:layout_width="@dimen/dp60"
             android:layout_height="@dimen/dp60"
             android:layout_marginStart="@dimen/dp20"
-            android:layout_marginTop="@dimen/dp30"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp10"
-            android:layout_marginTop="@dimen/dp30"
             android:text="@string/welcome_user"
             app:layout_constraintBottom_toBottomOf="@id/img_profile"
             app:layout_constraintStart_toEndOf="@id/img_profile"

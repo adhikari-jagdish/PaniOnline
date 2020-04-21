@@ -35,6 +35,7 @@
     <string name="settings">Settings</string>
     <string name="bookings">Bookings</string>
     <string name="cart">Cart</string>
+    <string name="notifications">Notification</string>
     <string name="bisleri">Bisleri</string>
     <string name="welcome_user">Welcome User!</string>
     <string name="explore_more">Explore More</string>

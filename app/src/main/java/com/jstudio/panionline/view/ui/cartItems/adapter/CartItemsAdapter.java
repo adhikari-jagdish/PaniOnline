@@ -52,6 +52,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
     public void onBindViewHolder(@NonNull CartItemHolder holder, int position) {
         cartItemObj = cartItemList.get(position);
         holder.binding.setCartItems(cartItemObj);
+        holder.binding.txtCartItemsVal.setText(String.valueOf(cartItemObj.getProductQuantity()));
 
         int finalPrice = cartItemList.get(position).getProductPrice() * cartItemList.get(position).getProductQuantity();
 
@@ -60,6 +61,8 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
                 if (isDecrease) {
                     if (cartItemList.get(position1).getProductQuantity() > 1)
                         cartItemList.get(position1).setProductQuantity(cartItemList.get(position1).getProductQuantity() - 1);
+                    else if (cartItemList.get(position1).getProductQuantity() == 1)
+                        deleteCartItems(holder, position1);
                 } else {
                     if (cartItemList.get(position1).getProductQuantity() < 99)
                         cartItemList.get(position1).setProductQuantity(cartItemList.get(position1).getProductQuantity() + 1);
@@ -87,26 +90,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
                             }
                         });
             } else {
-                cartDataSource.deleteCart(cartItemList.get(position1))
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new SingleObserver<Integer>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
-
-                            }
-
-                            @Override
-                            public void onSuccess(Integer integer) {
-                                    notifyItemRemoved(holder.getAdapterPosition());
-                                    EventBus.getDefault().postSticky(new CalculatePriceEvent());
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                Toast.makeText(context, "[DELETE_CART]" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                deleteCartItems(holder, position1);
             }
         });
 
@@ -153,5 +137,28 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
                 }
             }
         }
+    }
+
+    public void deleteCartItems(CartItemHolder holder, int position) {
+        cartDataSource.deleteCart(cartItemList.get(position))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Integer integer) {
+                        notifyItemRemoved(holder.getAdapterPosition());
+                        EventBus.getDefault().postSticky(new CalculatePriceEvent());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(context, "[DELETE_CART]" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

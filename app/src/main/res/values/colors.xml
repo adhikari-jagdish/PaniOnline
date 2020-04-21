@@ -22,4 +22,5 @@
     <color name="color_8B8E8C">#414341</color>
     <color name="color_7CFA7C">#41B341</color>
     <color name="color_616661">#616661</color>
+    <color name="actionbar_opacity">#33000000</color>
 </resources>
