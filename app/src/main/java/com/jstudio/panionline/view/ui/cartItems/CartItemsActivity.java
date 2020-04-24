@@ -68,7 +68,7 @@ public class CartItemsActivity extends BaseActivity {
 
 
     /**
-     * Initialize the data components and functionalities
+     * Initialize the data components and function
      */
     private void init() {
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(this).cartDAO());
@@ -87,7 +87,7 @@ public class CartItemsActivity extends BaseActivity {
                         mbinding.cartListRv.setVisibility(View.INVISIBLE);
                         mbinding.txtNoItemsInCart.setVisibility(View.VISIBLE);
                     } else {
-                        Toast.makeText(this, "[GET CART_ITEMS_CALLED]", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, "[GET CART_ITEMS_CALLED]", Toast.LENGTH_SHORT).show();
                         cartItemList.clear();
                         cartItemList.addAll(cartItems);
                         mAdapter.notifyDataSetChanged();
@@ -96,7 +96,7 @@ public class CartItemsActivity extends BaseActivity {
                         mbinding.txtNoItemsInCart.setVisibility(View.INVISIBLE);
                     }
                 }, throwable -> {
-                    Toast.makeText(this, "[GET CART]" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(this, "[GET CART]" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 })
 
         );

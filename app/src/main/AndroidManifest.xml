@@ -7,25 +7,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.ui.cartItems.CartItemsActivity"></activity>
+        <activity android:name=".view.ui.cartItems.CartItemsActivity"/>
         <activity android:name=".view.ui.checkOut.PaymentActivity" />
         <activity android:name=".view.ui.checkOut.DeliveryActivity" />
         <activity android:name=".view.ui.user.itemDetails.ItemDetails" />
         <activity
             android:name=".view.ui.user.home.UserHomeActivity"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.ui.accountVerification.AccountVerificationActivity" />
         <activity
@@ -33,7 +29,14 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".view.ui.splash.SplashActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".view.ui.welcomeScreen.WelcomeScreen" />
 
         <meta-data

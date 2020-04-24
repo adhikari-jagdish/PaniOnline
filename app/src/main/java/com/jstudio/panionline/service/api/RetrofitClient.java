@@ -13,10 +13,11 @@ import static com.jstudio.panionline.utility.constant.AppConstant.BASE_URL_STAGE
 
 public class RetrofitClient {
     private static ApiService apiService;
+    private static Retrofit retrofit;
 
     public RetrofitClient() {
 
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL_STAGE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -24,7 +25,7 @@ public class RetrofitClient {
         apiService = retrofit.create(ApiService.class);
     }
 
-    public ApiService getApiService(){
-        return apiService;
+    public static <S> S getApiService(Class<S> serviceClass) {
+        return retrofit.create(serviceClass);
     }
 }

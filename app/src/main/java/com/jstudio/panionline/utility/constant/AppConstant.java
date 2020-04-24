@@ -7,4 +7,8 @@ public class AppConstant {
 
     public static final String GET_PRODUCTS = "getProducts";
     public static final String PRODUCT_DETAILS = "productDetails";
+    public static final String LOGIN_MOBILE = "loginMobile";
+    public static final String VERIFY_OTP = "verifyOtp";
+
+
 }

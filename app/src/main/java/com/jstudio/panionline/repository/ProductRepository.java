@@ -24,11 +24,14 @@ public class ProductRepository {
         return instance;
     }
 
+    private ProductRepository() {
+        RetrofitClient.getApiService(ApiService.class);
+    }
+
     public LiveData<ProductListResponse> getProducts(){
         final MutableLiveData<ProductListResponse> data = new MutableLiveData<>();
-        RetrofitClient client = new RetrofitClient();
 
-        client.getApiService().getProducts().enqueue(new Callback<ProductListResponse>() {
+        apiService.getProducts().enqueue(new Callback<ProductListResponse>() {
             @Override
             public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
                 data.setValue(response.body());
@@ -36,7 +39,7 @@ public class ProductRepository {
 
             @Override
             public void onFailure(Call<ProductListResponse> call, Throwable t) {
-                Log.d("FailureResponse+++",t.toString());
+                Log.d("ProductsFResponse+++",t.toString());
             }
         });
 
