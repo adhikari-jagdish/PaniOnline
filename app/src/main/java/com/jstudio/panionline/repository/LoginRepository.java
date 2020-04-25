@@ -14,46 +14,39 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginRepository {
-
-    private static LoginRepository instance;
     private ApiService apiService;
-    private MutableLiveData<LoginResponse> data;
+    private static LoginRepository loginRepository;
 
-
-
-    public static LoginRepository getInstance() {
-        if (instance == null) {
-            instance = new LoginRepository();
+    private static LoginRepository getInstance() {
+        if (loginRepository == null) {
+            loginRepository = new LoginRepository();
         }
-        return instance;
+        return loginRepository;
     }
 
 
     public LoginRepository() {
-        RetrofitClient.getApiService(ApiService.class);
-        data = new MutableLiveData<>();
+        apiService = RetrofitClient.getApiService(ApiService.class);
     }
 
-    public LiveData<LoginResponse> login(String username) {
-
+    public MutableLiveData<LoginResponse> login(String username) {
+        MutableLiveData<LoginResponse> data = new MutableLiveData<>();
         apiService.login(username).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                data.setValue(response.body());
+                if (response.body() != null)
+                    data.setValue(response.body());
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Log.d("LoginFResponse+++", t.toString());
+                data.postValue(null);
             }
         });
-
         return data;
     }
 
-    public LiveData<LoginResponse> getLoginResponseLiveData() {
-        return data;
-    }
 
 
 }

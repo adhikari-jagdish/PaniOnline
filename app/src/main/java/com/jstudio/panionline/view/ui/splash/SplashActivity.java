@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.view.base.BaseActivity;
-import com.jstudio.panionline.view.ui.welcomeScreen.WelcomeScreen;
+import com.jstudio.panionline.view.ui.user.home.UserHomeActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,7 +26,8 @@ public class SplashActivity extends BaseActivity {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                WelcomeScreen.startTutorialActivity(SplashActivity.this);
+                //WelcomeScreen.startTutorialActivity(SplashActivity.this);
+                UserHomeActivity.startUserHomeActivity(SplashActivity.this);
             }
         };
         timer.schedule(timerTask, SPLASH_DELAY);

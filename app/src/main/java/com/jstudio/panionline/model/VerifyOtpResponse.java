@@ -1,25 +1,15 @@
 package com.jstudio.panionline.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-public class LoginResponse {
+public class VerifyOtpResponse {
 
     /**
      * statusCode : true
-     * message : Otp has been sent to registered username!
-     * data : 1
+     * message : Otp validation success
+     * data : 3
      */
-    @SerializedName("statusCode")
-    @Expose
+
     private boolean statusCode;
-
-    @SerializedName("message")
-    @Expose
     private String message;
-
-    @SerializedName("data")
-    @Expose
     private int data;
 
     public boolean isStatusCode() {

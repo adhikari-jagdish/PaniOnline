@@ -1,4 +1,9 @@
 package com.jstudio.panionline.utility.session;
 
-public class PreferenceUtil {
+public interface PreferenceUtil {
+
+    void setIsLoggedIn(boolean isLoggedIn);
+
+    boolean getIsLoggedIn();
+
 }

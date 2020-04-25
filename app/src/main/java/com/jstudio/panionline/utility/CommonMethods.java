@@ -2,9 +2,9 @@ package com.jstudio.panionline.utility;
 
 import android.content.Context;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.gmail.samehadar.iosdialog.IOSDialog;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.model.eventbus.SendCartItemsCountEvent;
 import com.jstudio.panionline.service.database.CartDataSource;
@@ -23,6 +23,7 @@ import io.reactivex.schedulers.Schedulers;
 public class CommonMethods {
 
     public static final String TAG = "Common Method";
+    private static IOSDialog dialog0;
 
 
     //Method to Add Items to Room Database
@@ -77,5 +78,16 @@ public class CommonMethods {
                         //Toast.makeText(context, "[COUNT_CART]" + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    public static void showDialog(Context mContext) {
+        dialog0 = new IOSDialog.Builder(mContext)
+                .setTitleColorRes(R.color.gray)
+                .build();
+        dialog0.show();
+    }
+
+    public static void dismissDialog() {
+        dialog0.dismiss();
     }
 }

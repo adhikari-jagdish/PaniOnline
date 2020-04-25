@@ -11,6 +11,7 @@ import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
 import com.jstudio.panionline.model.ProductListResponse;
+import com.jstudio.panionline.repository.LoginRepository;
 import com.jstudio.panionline.repository.ProductRepository;
 import com.jstudio.panionline.service.api.ApiService;
 import com.jstudio.panionline.service.api.RetrofitClient;
@@ -20,14 +21,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductListViewModel extends AndroidViewModel {
-    private final LiveData<ProductListResponse> productList;
+    private MutableLiveData<ProductListResponse> productList;
+    private ProductRepository productRepository;
 
 
     public ProductListViewModel(@NonNull Application application) {
         super(application);
-
-        productList = ProductRepository.getInstance().getProducts();
-
+        productRepository = ProductRepository.getInstance();
+        productList = productRepository.getProducts();
     }
 
     /**

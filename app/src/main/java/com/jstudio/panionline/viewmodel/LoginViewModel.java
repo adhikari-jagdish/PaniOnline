@@ -5,27 +5,26 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.jstudio.panionline.model.LoginResponse;
 import com.jstudio.panionline.model.ProductListResponse;
 import com.jstudio.panionline.repository.LoginRepository;
 
 public class LoginViewModel extends AndroidViewModel {
-    private LiveData<LoginResponse> loginLD;
+    private MutableLiveData<LoginResponse> loginLD;
     private LoginRepository loginRepository;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
-        init();
-    }
-
-    private void init(){
         loginRepository = new LoginRepository();
-        loginLD = LoginRepository.getInstance().getLoginResponseLiveData();
     }
 
+    public void callLogin(String username){
+        loginLD = loginRepository.login(username);
+    }
 
-    public LiveData<LoginResponse> login(){
+    public LiveData<LoginResponse> getLoginResponse(){
         return loginLD;
     }
 }

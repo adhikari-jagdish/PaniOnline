@@ -2,7 +2,6 @@ package com.jstudio.panionline.repository;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.jstudio.panionline.model.ProductListResponse;
@@ -15,34 +14,35 @@ import retrofit2.Response;
 
 public class ProductRepository {
     private ApiService apiService;
-    private static ProductRepository instance;
+    private static ProductRepository productRepository;
 
-    public static ProductRepository getInstance(){
-        if(instance == null){
-            instance = new ProductRepository();
+    public static ProductRepository getInstance() {
+        if (productRepository == null) {
+            productRepository = new ProductRepository();
         }
-        return instance;
+        return productRepository;
     }
 
-    private ProductRepository() {
-        RetrofitClient.getApiService(ApiService.class);
+    public ProductRepository() {
+        apiService = RetrofitClient.getApiService(ApiService.class);
     }
 
-    public LiveData<ProductListResponse> getProducts(){
-        final MutableLiveData<ProductListResponse> data = new MutableLiveData<>();
-
+    public MutableLiveData<ProductListResponse> getProducts() {
+        MutableLiveData<ProductListResponse> data = new MutableLiveData<>();
         apiService.getProducts().enqueue(new Callback<ProductListResponse>() {
             @Override
             public void onResponse(Call<ProductListResponse> call, Response<ProductListResponse> response) {
-                data.setValue(response.body());
+                if (response != null && response.body().getData() != null) {
+                    data.setValue(response.body());
+                }
             }
 
             @Override
             public void onFailure(Call<ProductListResponse> call, Throwable t) {
-                Log.d("ProductsFResponse+++",t.toString());
+                Log.d("ProductsFResponse+++", t.toString());
+                data.setValue(null);
             }
         });
-
         return data;
     }
 }

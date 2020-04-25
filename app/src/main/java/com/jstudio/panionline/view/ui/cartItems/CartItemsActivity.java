@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +16,7 @@ import com.jstudio.panionline.service.database.CartItem;
 import com.jstudio.panionline.service.database.LocalCartDataSource;
 import com.jstudio.panionline.view.base.BaseActivity;
 import com.jstudio.panionline.view.ui.cartItems.adapter.CartItemsAdapter;
+import com.jstudio.panionline.view.ui.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,9 +96,24 @@ public class CartItemsActivity extends BaseActivity {
                         mbinding.txtNoItemsInCart.setVisibility(View.INVISIBLE);
                     }
                 }, throwable -> {
-                   // Toast.makeText(this, "[GET CART]" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(this, "[GET CART]" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 })
 
         );
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v != null) {
+            super.onClick(v);
+            switch (v.getId()) {
+                case R.id.btn_proceed_checkout:
+                    LoginActivity.startLoginActivity(this);
+                    break;
+
+
+            }
+        }
+
     }
 }
