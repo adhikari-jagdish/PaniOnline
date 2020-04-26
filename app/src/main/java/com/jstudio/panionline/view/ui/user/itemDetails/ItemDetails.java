@@ -18,6 +18,7 @@ import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.LocalCartDataSource;
 import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.utility.constant.AppConstant;
+import com.jstudio.panionline.utility.session.Preference_POSession;
 import com.jstudio.panionline.view.base.BaseActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,7 +48,7 @@ public class ItemDetails extends BaseActivity {
         }
         setBackEnabled_Title(true, products.getProductName(), true);
 
-        CommonMethods.countItemsInCart(this, 100);
+        CommonMethods.countItemsInCart(this, Preference_POSession.getInstance(this).getUserId());
 
         init();
     }
@@ -150,7 +151,7 @@ public class ItemDetails extends BaseActivity {
             switch (v.getId()) {
                 case R.id.btn_add_to_cart:
                     compositeDisposable.add(
-                            cartDataSource.insertOrReplaceAll(CommonMethods.addItemsToCart(100,
+                            cartDataSource.insertOrReplaceAll(CommonMethods.addItemsToCart(Preference_POSession.getInstance(this).getUserId(),
                                     products.getProductId(), 1,  products.getProductName(),
                                     products.getProductImageUrl(),
                                     products.getProductPrice()))
@@ -160,7 +161,7 @@ public class ItemDetails extends BaseActivity {
                                                 Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
                                                 mBinding.btnAddToCart.setVisibility(View.INVISIBLE);
                                                 mBinding.btnAddedToCart.setVisibility(View.VISIBLE);
-                                                 CommonMethods.countItemsInCart(this, 100);
+                                                 CommonMethods.countItemsInCart(this, Preference_POSession.getInstance(this).getUserId());
                                             },
 
                                             throwable -> {

@@ -40,4 +40,7 @@ public interface CartDAO {
     @Query("DELETE FROM Cart WHERE userId= :userId")
     Single<Integer>cleanCart (int userId);
 
+    @Query("UPDATE Cart SET userId = :newUserId WHERE userId = :userId")
+    Single<Integer> updateUserId(int newUserId, int userId);
+
 }

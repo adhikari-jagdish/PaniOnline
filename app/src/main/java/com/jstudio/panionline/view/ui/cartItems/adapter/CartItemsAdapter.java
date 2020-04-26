@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.CartListItemLayoutBinding;
 import com.jstudio.panionline.model.eventbus.CalculatePriceEvent;
+import com.jstudio.panionline.model.eventbus.SendTotalAmountEvent;
 import com.jstudio.panionline.service.database.CartDataSource;
 import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.CartItem;
@@ -55,6 +56,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
         holder.binding.txtCartItemsVal.setText(String.valueOf(cartItemObj.getProductQuantity()));
 
         int finalPrice = cartItemList.get(position).getProductPrice() * cartItemList.get(position).getProductQuantity();
+        EventBus.getDefault().postSticky(new SendTotalAmountEvent(String.valueOf(finalPrice)));
 
         holder.setListener((view, position1, isDecrease, isDelete) -> {
             if (!isDelete) {

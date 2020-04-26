@@ -20,10 +20,12 @@
         <activity android:name=".view.ui.user.itemDetails.ItemDetails" />
         <activity
             android:name=".view.ui.user.home.UserHomeActivity"
-            android:launchMode="singleTop">
+           >
 
         </activity>
-        <activity android:name=".view.ui.accountVerification.AccountVerificationActivity" />
+        <activity
+            android:launchMode="singleTop"
+            android:name=".view.ui.accountVerification.AccountVerificationActivity" />
         <activity
             android:name=".view.ui.login.LoginActivity"
             android:windowSoftInputMode="adjustNothing" />

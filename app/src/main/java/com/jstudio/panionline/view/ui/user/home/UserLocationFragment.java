@@ -1,5 +1,6 @@
 package com.jstudio.panionline.view.ui.user.home;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,23 +20,28 @@ import com.bumptech.glide.request.RequestOptions;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.FragmentUserLocationBinding;
 import com.jstudio.panionline.model.ProductListResponse;
+import com.jstudio.panionline.model.eventbus.SendUserProfileDetails;
 import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.view.ui.user.home.adapter.HomeItemsAdapter;
 import com.jstudio.panionline.viewmodel.ProductListViewModel;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
 public class UserLocationFragment extends Fragment {
     private FragmentUserLocationBinding mBinding;
     private HomeItemsAdapter mAdapter;
-    private ViewModelProvider.Factory viewModelFactory;
     private final String LOG = getClass().getSimpleName();
     private ArrayList<ProductListResponse.DataBean> products = new ArrayList<>();
+    private String profileImageUrl = "";
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ProductListViewModel mProductListVM = ViewModelProviders.of(getActivity()).get(ProductListViewModel.class);
+        ProductListViewModel mProductListVM = new ViewModelProvider(this).get(ProductListViewModel.class);
         mProductListVM.getProductList();
         observeViewModel(mProductListVM);
     }
@@ -49,9 +55,31 @@ public class UserLocationFragment extends Fragment {
                 products.addAll(productListResponse.getData());
                 mAdapter.notifyDataSetChanged();
             }
-
         });
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getUserDetails(SendUserProfileDetails userProfileDetails) {
+        if (userProfileDetails.isLoggedIn()) {
+            mBinding.txtUsernameTitle.setText("Welcome " + userProfileDetails.getProfileName() + "!");
+            profileImageUrl = userProfileDetails.getProfileImageUrl();
+            displayProfileImage(profileImageUrl);
+        } else {
+            mBinding.txtUsernameTitle.setText(getString(R.string.welcome_user));
+        }
     }
 
     @Override
@@ -70,19 +98,25 @@ public class UserLocationFragment extends Fragment {
     /**
      * Initialize the UI first
      */
+    @SuppressLint("SetTextI18n")
     private void initUI() {
-        //Init Username Dashboard
-        RequestOptions options = new RequestOptions();
-        Glide.with(getActivity())
-                .load(Uri.parse("https://i.ibb.co/TKDG2zw/images-q-tbn-ANd9-Gc-QIVo-QC0-EDa-Ai-X4-Tjzl3f7p-P6-GVPg-VQm-LIdci-CMg-Uu-Cc-VR9-QQRn8-Q-s.png")) // add your image url
-                .apply(options.circleCrop())
-                .into(mBinding.imgProfile);
+        displayProfileImage(profileImageUrl);
 
         //Init RecyclerView
         mAdapter = new HomeItemsAdapter(getActivity(), products);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         mBinding.homeItemsRv.setLayoutManager(gridLayoutManager);
         mBinding.homeItemsRv.setAdapter(mAdapter);
+    }
+
+    private void displayProfileImage(String imgUrl) {
+        //Init Username Dashboard
+        Glide.with(getActivity())
+                .load(Uri.parse(imgUrl)) // add your image url
+                .apply(new RequestOptions().circleCrop())
+                .placeholder(R.drawable.ic_user)
+                .into(mBinding.imgProfile);
+
     }
 
 }

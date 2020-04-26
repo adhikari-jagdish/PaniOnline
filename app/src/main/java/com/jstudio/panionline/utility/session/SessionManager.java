@@ -1,27 +1,19 @@
 package com.jstudio.panionline.utility.session;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import com.skydoves.preferenceroom.KeyName;
+import com.skydoves.preferenceroom.PreferenceEntity;
 
-import static android.content.Context.MODE_PRIVATE;
-
+@PreferenceEntity(name = "POSession")
 public class SessionManager {
-    private static SharedPreferences pref;
-    private static SharedPreferences.Editor editor;
+    @KeyName(name = "isLoggedIn")
+    protected final boolean userLoggedIn = false;
 
-    public static void initSessionManager(Context mContext) {
-        pref = mContext.getSharedPreferences(PreferenceConstants.PREFS_NAME, MODE_PRIVATE);
-        editor = pref.edit();
-        editor.apply();
-    }
+    @KeyName(name = "name")
+    protected final String userDisplayName = "";
 
+    @KeyName(name = "imageUrl")
+    protected final String userProfileImage = "";
 
-    public static void setIsLoggedIn(boolean isLoggedIn) {
-        editor.putBoolean(PreferenceConstants.IS_USER_LOGGED_IN, isLoggedIn);
-    }
-
-
-    public static boolean getIsLoggedIn() {
-        return pref.getBoolean(PreferenceConstants.IS_USER_LOGGED_IN, false);
-    }
+    @KeyName(name = "userId")
+    protected final int userId = 0;
 }

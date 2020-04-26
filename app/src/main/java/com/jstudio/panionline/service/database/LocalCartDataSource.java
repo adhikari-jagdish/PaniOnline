@@ -53,4 +53,9 @@ public class LocalCartDataSource implements CartDataSource {
     public Single<Integer> cleanCart(int userId) {
         return cartDAO.cleanCart(userId);
     }
+
+    @Override
+    public Single<Integer> updateUserId(int newUserId, int userId) {
+        return cartDAO.updateUserId(newUserId, userId);
+    }
 }

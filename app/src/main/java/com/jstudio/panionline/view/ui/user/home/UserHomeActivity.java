@@ -3,7 +3,6 @@ package com.jstudio.panionline.view.ui.user.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -13,7 +12,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityUserHomeBinding;
 import com.jstudio.panionline.model.eventbus.SendCartItemsCountEvent;
+import com.jstudio.panionline.model.eventbus.SendUserProfileDetails;
 import com.jstudio.panionline.utility.CommonMethods;
+import com.jstudio.panionline.utility.session.Preference_POSession;
 import com.jstudio.panionline.view.base.BaseActivity;
 import com.jstudio.panionline.view.ui.common.SettingsFragment;
 
@@ -39,6 +40,10 @@ public class UserHomeActivity extends BaseActivity {
 
         setUpBottomNav();
 
+        //Get Session Saved data and set in UI
+        Preference_POSession poSession = Preference_POSession.getInstance(this);
+        EventBus.getDefault().postSticky(new SendUserProfileDetails(poSession.getName(), poSession.getImageUrl(), poSession.getIsLoggedIn()));
+
     }
 
     public static void startUserHomeActivity(Context context) {
@@ -51,7 +56,7 @@ public class UserHomeActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
-        CommonMethods.countItemsInCart(this, 100);
+        CommonMethods.countItemsInCart(this, Preference_POSession.getInstance(this).getUserId());
     }
 
     @Override

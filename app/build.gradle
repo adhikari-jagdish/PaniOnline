@@ -61,4 +61,8 @@ dependencies {
 
     //EventBus
     implementation 'org.greenrobot:eventbus:3.2.0'
+
+    //PreferenceRoom
+    implementation 'com.github.skydoves:preferenceroom:1.1.4'
+    annotationProcessor 'com.github.skydoves:preferenceroom-processor:1.1.4'
 }

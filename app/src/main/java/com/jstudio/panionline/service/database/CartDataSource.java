@@ -23,4 +23,6 @@ public interface CartDataSource {
     Single<Integer> deleteCart(CartItem cartItem);
 
     Single<Integer> cleanCart(int userId);
+
+    Single<Integer> updateUserId(int newUserId, int userId);
 }

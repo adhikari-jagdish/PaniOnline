@@ -1,18 +1,24 @@
 package com.jstudio.panionline.utility;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.gmail.samehadar.iosdialog.IOSDialog;
+import com.google.android.material.snackbar.Snackbar;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.model.eventbus.SendCartItemsCountEvent;
 import com.jstudio.panionline.service.database.CartDataSource;
 import com.jstudio.panionline.service.database.CartDatabase;
 import com.jstudio.panionline.service.database.CartItem;
 import com.jstudio.panionline.service.database.LocalCartDataSource;
+import com.jstudio.panionline.utility.session.Preference_POSession;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.SingleObserver;
@@ -55,7 +61,6 @@ public class CommonMethods {
 
     public static void countItemsInCart(Context context, int userId) {
         CartDataSource cartDataSource;
-        //get the number of items added to cart and show in badge
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(context).cartDAO());
 
         cartDataSource.countCart(userId)
@@ -80,14 +85,59 @@ public class CommonMethods {
                 });
     }
 
+    public static void updateUserIdInDb(Context mContext, int tempUserId, int newUserId) {
+        CartDataSource cartDataSource;
+        cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(mContext).cartDAO());
+        cartDataSource.updateUserId(newUserId, tempUserId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Integer integer) {
+                        Toast.makeText(mContext, "[NEW_USERID]" + integer, Toast.LENGTH_LONG).show();
+                       // Preference_POSession.getInstance(mContext).putUserId(integer);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Toast.makeText(mContext, "[UPDATE_USERID]" + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+    }
+
     public static void showDialog(Context mContext) {
-        dialog0 = new IOSDialog.Builder(mContext)
-                .setTitleColorRes(R.color.gray)
-                .build();
-        dialog0.show();
+        try {
+            dialog0 = new IOSDialog.Builder(mContext)
+                    .setTitleColorRes(R.color.gray)
+                    .build();
+            dialog0.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void dismissDialog() {
         dialog0.dismiss();
+    }
+
+    public static void showSnackBar(View view, String message) {
+        try {
+            Snackbar snackbar = Snackbar
+                    .make(view, message, Snackbar.LENGTH_LONG);
+            snackbar.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int generateRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(80 - 65) + 65;
     }
 }

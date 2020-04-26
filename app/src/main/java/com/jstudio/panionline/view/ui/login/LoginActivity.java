@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityLoginBinding;
+import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.view.base.BaseActivity;
 import com.jstudio.panionline.view.ui.accountVerification.AccountVerificationActivity;
 import com.jstudio.panionline.viewmodel.LoginViewModel;
@@ -47,6 +48,7 @@ public class LoginActivity extends BaseActivity {
      */
     private void initClickListener() {
         mBinding.loginBtn.setOnClickListener(this);
+        mBinding.crossIv.setOnClickListener(this);
     }
 
     @Override
@@ -55,14 +57,23 @@ public class LoginActivity extends BaseActivity {
         if (v != null) {
             switch (v.getId()) {
                 case R.id.login_btn:
-                    loginVM.callLogin(mBinding.contactEt.getText().toString());
+                    CommonMethods.showDialog(this);
+                    String loginUsername = mBinding.txtCountryCodePrefix.getText().toString() + mBinding.contactEt.getText().toString();
+                    loginVM.callLogin(loginUsername);
                     loginVM.getLoginResponse().observe(this, loginResponse -> {
+                        CommonMethods.dismissDialog();
                         if (loginResponse != null) {
                             if (loginResponse.isStatusCode()) {
-                                AccountVerificationActivity.startAccountVerificationActivity(this, mBinding.contactEt.getText().toString());
+                                AccountVerificationActivity.startAccountVerificationActivity(this, loginUsername);
+                            } else {
+                                CommonMethods.showSnackBar(mBinding.getRoot(), loginResponse.getMessage());
                             }
                         }
                     });
+                    break;
+
+                case R.id.cross_iv:
+                    super.onBackPressed();
                     break;
             }
         }

@@ -3,7 +3,8 @@ package com.jstudio.panionline.view.ui.accountVerification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -11,11 +12,15 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityAccountVerificationBinding;
+import com.jstudio.panionline.model.eventbus.SendUserProfileDetails;
 import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.utility.constant.AppConstant;
-import com.jstudio.panionline.utility.session.SessionManager;
+import com.jstudio.panionline.utility.session.Preference_POSession;
 import com.jstudio.panionline.view.base.BaseActivity;
+import com.jstudio.panionline.view.ui.checkOut.DeliveryActivity;
 import com.jstudio.panionline.viewmodel.VerifyOtpViewModel;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class AccountVerificationActivity extends BaseActivity {
     private ActivityAccountVerificationBinding mBinding;
@@ -33,12 +38,12 @@ public class AccountVerificationActivity extends BaseActivity {
             username = getIntent().getExtras().getString(AppConstant.USERNAME);
         }
         initClickListener();
+        initOtpSys();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        SessionManager.initSessionManager(this);
     }
 
     /**
@@ -78,18 +83,110 @@ public class AccountVerificationActivity extends BaseActivity {
                 case R.id.verify_otp_tv:
                     CommonMethods.showDialog(this);
                     verifyOtpVM.callVerifyOtp(username, concatOtp());
-                    Log.d(TAG, "Username" + username);
                     verifyOtpVM.getVerifyOtpResponse().observe(this, verifyOtpResponse -> {
                         CommonMethods.dismissDialog();
                         if (verifyOtpResponse != null && verifyOtpResponse.isStatusCode()) {
-                            SessionManager.setIsLoggedIn(true);
-                            Log.d(TAG, "Logged++++");
+                            Preference_POSession poSession = Preference_POSession.getInstance(this);
+                            poSession.putIsLoggedIn(true);
+                            poSession.putName(verifyOtpResponse.getData().getName());
+                            poSession.putImageUrl(verifyOtpResponse.getData().getImageUrl());
+                            poSession.putUserId(verifyOtpResponse.getData().getUserId());
+                            CommonMethods.updateUserIdInDb(this, poSession.getUserId(), verifyOtpResponse.getData().getUserId());
+                            EventBus.getDefault().postSticky(new SendUserProfileDetails(verifyOtpResponse.getData().getName(), verifyOtpResponse.getData().getImageUrl(), true));
+                            DeliveryActivity.startDeliveryActivity(this);
                         } else {
-                            Log.d(TAG, "Loggin Error++++");
+                            CommonMethods.showSnackBar(mBinding.getRoot(), verifyOtpResponse.getMessage());
                         }
                     });
                     break;
             }
         }
     }
+
+    /**
+     * Method to fill the otp numbers inf fields
+     */
+    private void initOtpSys() {
+        mBinding.otpOne.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (mBinding.otpOne.getText().toString().length() == 1) {
+                    mBinding.otpTwo.requestFocus();
+                }
+            }
+        });
+
+        mBinding.otpTwo.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (mBinding.otpTwo.getText().toString().length() == 0) {
+                    mBinding.otpOne.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (mBinding.otpTwo.getText().toString().length() == 1) {
+                    mBinding.otpThree.requestFocus();
+                }
+            }
+        });
+
+        mBinding.otpThree.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (mBinding.otpThree.getText().toString().length() == 0) {
+                    mBinding.otpTwo.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (mBinding.otpThree.getText().toString().length() == 1) {
+                    mBinding.otpFour.requestFocus();
+                }
+            }
+        });
+
+        mBinding.otpFour.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (mBinding.otpFour.getText().toString().length() == 0) {
+                    mBinding.otpThree.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+
 }
