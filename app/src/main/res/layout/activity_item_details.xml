@@ -40,6 +40,7 @@
                 android:layout_width="@dimen/dp50"
                 android:layout_height="@dimen/dp50"
                 android:layout_marginEnd="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp30"
                 android:background="@drawable/shape_oval_white"
                 android:padding="@dimen/dp12"
                 android:src="@drawable/ic_heart"

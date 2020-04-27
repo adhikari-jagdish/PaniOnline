@@ -19,7 +19,7 @@
         android:elevation="@dimen/dp5"
         android:translationZ="@dimen/dp5"
         app:strokeColor="@color/black"
-        app:strokeWidth="@dimen/dp1"
+        app:strokeWidth="@dimen/dp2"
         app:cardCornerRadius="@dimen/dp5">
 
         <androidx.constraintlayout.widget.ConstraintLayout

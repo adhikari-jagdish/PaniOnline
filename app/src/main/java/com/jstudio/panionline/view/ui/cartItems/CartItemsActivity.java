@@ -1,5 +1,6 @@
 package com.jstudio.panionline.view.ui.cartItems;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityCartItemsBinding;
+import com.jstudio.panionline.model.eventbus.CalculatePriceEvent;
 import com.jstudio.panionline.model.eventbus.SendTotalAmountEvent;
 import com.jstudio.panionline.service.database.CartDataSource;
 import com.jstudio.panionline.service.database.CartDatabase;
@@ -66,9 +68,9 @@ public class CartItemsActivity extends BaseActivity {
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void getItemTotal(SendTotalAmountEvent sendTotalAmountEvent){
-        if(sendTotalAmountEvent!=null){
-            mbinding.txtTotalVal.setText(getText(R.string.inr_symbol) + sendTotalAmountEvent.getTotalAmount()+".00");
+    public void getItemTotal(CalculatePriceEvent calculatePriceEvent){
+        if(calculatePriceEvent!=null){
+           getItemsTotal();
         }
     }
 
@@ -131,12 +133,13 @@ public class CartItemsActivity extends BaseActivity {
     /**
      * Method to show the total calculated amount
      */
+    @SuppressLint("SetTextI18n")
     private void getItemsTotal() {
         compositeDisposable.add(cartDataSource.sumPrice(Preference_POSession.getInstance(this).getUserId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(sum -> {
-                    Log.d(TAG, "Total_Sum===>" + sum);
+                    mbinding.txtTotalVal.setText(getText(R.string.inr_symbol) + String.valueOf(sum)+".00");
                 }, throwable -> {
                     Log.d(TAG, "Sum_Error===>");
                 })

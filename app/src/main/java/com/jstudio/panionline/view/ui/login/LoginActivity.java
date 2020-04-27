@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.jstudio.panionline.R;
@@ -24,7 +25,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        loginVM = ViewModelProviders.of(this).get(LoginViewModel.class);
+        loginVM = new ViewModelProvider(this).get(LoginViewModel.class);
 
         initClickListener();
     }

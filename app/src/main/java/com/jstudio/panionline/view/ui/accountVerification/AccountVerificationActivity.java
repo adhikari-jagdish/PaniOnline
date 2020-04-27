@@ -87,11 +87,10 @@ public class AccountVerificationActivity extends BaseActivity {
                         CommonMethods.dismissDialog();
                         if (verifyOtpResponse != null && verifyOtpResponse.isStatusCode()) {
                             Preference_POSession poSession = Preference_POSession.getInstance(this);
+                            CommonMethods.updateUserIdInDb(this, poSession.getUserId(), verifyOtpResponse.getData().getUserId());
                             poSession.putIsLoggedIn(true);
                             poSession.putName(verifyOtpResponse.getData().getName());
                             poSession.putImageUrl(verifyOtpResponse.getData().getImageUrl());
-                            poSession.putUserId(verifyOtpResponse.getData().getUserId());
-                            CommonMethods.updateUserIdInDb(this, poSession.getUserId(), verifyOtpResponse.getData().getUserId());
                             EventBus.getDefault().postSticky(new SendUserProfileDetails(verifyOtpResponse.getData().getName(), verifyOtpResponse.getData().getImageUrl(), true));
                             DeliveryActivity.startDeliveryActivity(this);
                         } else {

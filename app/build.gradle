@@ -65,4 +65,7 @@ dependencies {
     //PreferenceRoom
     implementation 'com.github.skydoves:preferenceroom:1.1.4'
     annotationProcessor 'com.github.skydoves:preferenceroom-processor:1.1.4'
+
+    //Debug Db Entries
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

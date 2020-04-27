@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -48,6 +47,7 @@ public class ItemDetails extends BaseActivity {
         }
         setBackEnabled_Title(true, products.getProductName(), true);
 
+
         CommonMethods.countItemsInCart(this, Preference_POSession.getInstance(this).getUserId());
 
         init();
@@ -64,8 +64,6 @@ public class ItemDetails extends BaseActivity {
 
         compositeDisposable = new CompositeDisposable();
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(this).cartDAO());
-
-        checkIfItemsExistsInCart();
     }
 
 
@@ -91,7 +89,9 @@ public class ItemDetails extends BaseActivity {
 
                     @Override
                     public void onSuccess(Integer integer) {
-                        if (integer < 1) {
+                        Log.d(TAG, "ProductId++++"+integer);
+                        if (integer >= 1) {
+
                             mBinding.btnAddToCart.setVisibility(View.INVISIBLE);
                             mBinding.btnAddedToCart.setVisibility(View.VISIBLE);
                         }
@@ -109,6 +109,12 @@ public class ItemDetails extends BaseActivity {
     protected void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkIfItemsExistsInCart();
     }
 
     @Override
@@ -152,16 +158,16 @@ public class ItemDetails extends BaseActivity {
                 case R.id.btn_add_to_cart:
                     compositeDisposable.add(
                             cartDataSource.insertOrReplaceAll(CommonMethods.addItemsToCart(Preference_POSession.getInstance(this).getUserId(),
-                                    products.getProductId(), 1,  products.getProductName(),
+                                    products.getProductId(), 1, products.getProductName(),
                                     products.getProductImageUrl(),
                                     products.getProductPrice()))
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread())
                                     .subscribe(() -> {
-                                                Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                                                // Toast.makeText(this, "Added to Cart", Toast.LENGTH_SHORT).show();
                                                 mBinding.btnAddToCart.setVisibility(View.INVISIBLE);
                                                 mBinding.btnAddedToCart.setVisibility(View.VISIBLE);
-                                                 CommonMethods.countItemsInCart(this, Preference_POSession.getInstance(this).getUserId());
+                                                CommonMethods.countItemsInCart(this, Preference_POSession.getInstance(this).getUserId());
                                             },
 
                                             throwable -> {

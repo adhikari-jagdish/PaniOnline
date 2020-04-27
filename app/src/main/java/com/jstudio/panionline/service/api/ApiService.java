@@ -1,5 +1,7 @@
 package com.jstudio.panionline.service.api;
 
+import com.jstudio.panionline.model.AddAddressRequest;
+import com.jstudio.panionline.model.AddressListResponse;
 import com.jstudio.panionline.model.LoginResponse;
 import com.jstudio.panionline.model.ProductListResponse;
 import com.jstudio.panionline.model.VerifyOtpResponse;
@@ -26,4 +28,22 @@ public interface ApiService {
     @FormUrlEncoded
     @POST(AppConstant.VERIFY_OTP)
     Call<VerifyOtpResponse> verify_otp(@Field("username") String username, @Field("otp") String otp);
+
+    /**
+     * Get Address
+     * @param userId
+     */
+    @FormUrlEncoded
+    @POST(AppConstant.GET_ADDRESSES)
+    Call<AddressListResponse> address_list(@Field("userId") String userId);
+
+    /**
+     * Add New Address
+     * @param addAddressRequest Model contains all fields to post
+     */
+    @POST(AppConstant.ADD_ADDRESS)
+    Call<AddressListResponse> add_new_address(AddAddressRequest addAddressRequest);
+
+
+
 }

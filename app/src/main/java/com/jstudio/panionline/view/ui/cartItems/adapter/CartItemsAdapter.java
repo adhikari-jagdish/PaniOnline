@@ -33,7 +33,6 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
 
     private Context context;
     private List<CartItem> cartItemList;
-    private CartItem cartItemObj;
     private CartDataSource cartDataSource;
 
     public CartItemsAdapter(Context context, List<CartItem> cartItemList) {
@@ -46,17 +45,17 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
     @Override
     public CartItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         CartListItemLayoutBinding mBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.cart_list_item_layout, parent, false);
-        return new CartItemsAdapter.CartItemHolder(mBinding);
+        return new CartItemHolder(mBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CartItemHolder holder, int position) {
-        cartItemObj = cartItemList.get(position);
+        CartItem cartItemObj = cartItemList.get(position);
         holder.binding.setCartItems(cartItemObj);
         holder.binding.txtCartItemsVal.setText(String.valueOf(cartItemObj.getProductQuantity()));
 
         int finalPrice = cartItemList.get(position).getProductPrice() * cartItemList.get(position).getProductQuantity();
-        EventBus.getDefault().postSticky(new SendTotalAmountEvent(String.valueOf(finalPrice)));
+        //EventBus.getDefault().postSticky(new SendTotalAmountEvent(String.valueOf(finalPrice)));
 
         holder.setListener((view, position1, isDecrease, isDelete) -> {
             if (!isDelete) {
@@ -105,7 +104,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
     }
 
 
-    public class CartItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class CartItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private CartListItemLayoutBinding binding;
         private OnImageViewAdapterClickListener listener;
 
@@ -141,7 +140,7 @@ public class CartItemsAdapter extends RecyclerView.Adapter<CartItemsAdapter.Cart
         }
     }
 
-    public void deleteCartItems(CartItemHolder holder, int position) {
+    private void deleteCartItems(CartItemHolder holder, int position) {
         cartDataSource.deleteCart(cartItemList.get(position))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

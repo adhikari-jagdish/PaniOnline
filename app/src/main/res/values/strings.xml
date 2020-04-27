@@ -68,6 +68,14 @@
     <string name="empty_cart">Cart Empty</string>
     <string name="item_added_to_cart">Added to Cart</string>
 
+    <!--Add Address-->
+    <string name="flat_building">House No. / Flat / Floor</string>
+    <string name="colony_street">Colony / Street / Locality</string>
+    <string name="landmark">Landmark</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="pincode">6 digits [0–9] PIN code</string>
+    <string name="add_address">Add Address</string>
 
     <string name="sample_address">S-80, 4th Floor, Shakarpur, School Block, Laxminagar, Delhi</string>
 

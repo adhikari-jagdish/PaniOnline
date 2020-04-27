@@ -10,6 +10,10 @@ public class AppConstant {
     public static final String LOGIN_MOBILE = "loginMobile";
     public static final String VERIFY_OTP = "verifyOtp";
     public static final String USERNAME = "username";
+    public static final String GET_ADDRESSES = "getAddresses";
+    public static final String ADD_ADDRESS = "newAddress";
+
+    public static final int ADD_ADDRESS_ONACTIVITY_CODE = 42;
 
 
 }

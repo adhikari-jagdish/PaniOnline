@@ -12,13 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.DeliveryAddressCardLayoutBinding;
 import com.jstudio.panionline.databinding.HomeItemsCellLayoutBinding;
+import com.jstudio.panionline.model.AddressListResponse;
 import com.jstudio.panionline.view.ui.user.home.adapter.HomeItemsAdapter;
+
+import java.util.List;
 
 public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddressAdapter.AddressViewHolder> {
     private Context mContext;
+    private List<AddressListResponse.DataBean> mAddressList;
+    private AddressListResponse.DataBean addressObj;
 
-    public DeliveryAddressAdapter(Context mContext) {
+    public DeliveryAddressAdapter(Context mContext, List<AddressListResponse.DataBean> addressList) {
         this.mContext = mContext;
+        this.mAddressList = addressList;
     }
 
     @NonNull
@@ -30,12 +36,13 @@ public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddress
 
     @Override
     public void onBindViewHolder(@NonNull AddressViewHolder holder, int position) {
-        holder.bind(position);
+       addressObj = mAddressList.get(position);
+       holder.binding.setAddress(addressObj);
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return mAddressList.size();
     }
 
     public class AddressViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -46,11 +53,6 @@ public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddress
             this.binding = itemView;
             this.binding.itemsCard.setOnClickListener(this);
         }
-
-        public void bind(int position) {
-
-        }
-
 
         @Override
         public void onClick(View v) {

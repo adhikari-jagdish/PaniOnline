@@ -14,18 +14,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.ui.cartItems.CartItemsActivity"/>
+        <activity android:name=".view.ui.addAddress.AddAddressActivity"></activity>
+        <activity android:name=".view.ui.cartItems.CartItemsActivity" />
         <activity android:name=".view.ui.checkOut.PaymentActivity" />
         <activity android:name=".view.ui.checkOut.DeliveryActivity" />
         <activity android:name=".view.ui.user.itemDetails.ItemDetails" />
+        <activity android:name=".view.ui.user.home.UserHomeActivity"></activity>
         <activity
-            android:name=".view.ui.user.home.UserHomeActivity"
-           >
-
-        </activity>
-        <activity
-            android:launchMode="singleTop"
-            android:name=".view.ui.accountVerification.AccountVerificationActivity" />
+            android:name=".view.ui.accountVerification.AccountVerificationActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".view.ui.login.LoginActivity"
             android:windowSoftInputMode="adjustNothing" />
@@ -37,7 +34,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".view.ui.welcomeScreen.WelcomeScreen" />
 

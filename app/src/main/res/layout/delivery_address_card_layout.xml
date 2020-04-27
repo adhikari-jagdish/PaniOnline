@@ -2,10 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="address"
+            type="com.jstudio.panionline.model.AddressListResponse.DataBean"/>
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/items_card"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp150"
         android:background="@color/white"
         android:layout_marginStart="@dimen/dp20"
         android:layout_marginBottom="@dimen/dp3"
@@ -15,7 +21,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingStart="@dimen/dp20"
             android:paddingTop="@dimen/dp20"
             android:paddingEnd="@dimen/dp10"
@@ -26,8 +32,7 @@
                 style="@style/Regular_black_15_text"
                 android:layout_width="@dimen/dp200"
                 android:layout_height="wrap_content"
-                android:text="@string/sample_address"
-
+                android:text="@{address.completeAddress}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,20 +47,20 @@
 
             <ImageView
                 android:id="@+id/img_bottom_check"
-                android:layout_width="@dimen/dp30"
-                android:layout_height="@dimen/dp30"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:layout_marginStart="@dimen/dp20"
                 android:layout_marginEnd="@dimen/dp10"
                 android:background="@drawable/shape_circle"
-                android:padding="@dimen/dp9"
+                android:padding="@dimen/dp7"
                 android:layout_marginTop="@dimen/dp20"
                 android:src="@drawable/ic_tick"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_address" />
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
                 android:id="@+id/txt_delivery_address_tick"
-                style="@style/Regular_black_16_text"
+                style="@style/Regular_black_14_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp15"

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.ui.addAddress.AddAddressActivity">
+
+        <ImageView
+            android:id="@+id/img_top_background_add_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/add_address_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fb_icon_current_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp14"
+            android:layout_marginBottom="@dimen/dp40"
+            android:src="@drawable/ic_current_location"
+            app:layout_constraintBottom_toBottomOf="@id/img_top_background_add_address"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/add_address_cv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp15"
+            android:layout_marginEnd="@dimen/dp15"
+            app:strokeWidth="@dimen/dp2"
+            app:strokeColor="@color/black"
+            android:elevation="@dimen/dp5"
+            android:translationZ="@dimen/dp5"
+            app:cardCornerRadius="@dimen/dp10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fb_icon_current_location">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/dp20"
+                android:paddingTop="@dimen/dp20"
+                android:paddingEnd="@dimen/dp20"
+                android:paddingBottom="@dimen/dp25">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/flat_building_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/flat_building_et"
+                        style="@style/TextInputLayout"
+                        android:hint="@string/flat_building"
+                        android:inputType="text"
+                        android:maxLength="@integer/max_length_50"
+                        android:paddingStart="@dimen/dp20" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/colony_street_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/flat_building_til">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/colony_street_et"
+                        style="@style/TextInputLayout"
+                        android:hint="@string/colony_street"
+                        android:inputType="text"
+                        android:maxLength="@integer/max_length_50"
+                        android:paddingStart="@dimen/dp20" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/landmark_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/colony_street_til">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/landmark_et"
+                        style="@style/TextInputLayout"
+                        android:hint="@string/landmark"
+                        android:inputType="text"
+                        android:maxLength="@integer/max_length_50"
+                        android:paddingStart="@dimen/dp20" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/pincode_til"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp15"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/landmark_til">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/pincode_et"
+                        style="@style/TextInputLayout"
+                        android:hint="@string/pincode"
+                        android:inputType="number"
+                        android:maxLength="@integer/max_length_10"
+                        android:paddingStart="@dimen/dp20" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_address"
+            style="@style/ProceedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp15"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginEnd="@dimen/dp15"
+            android:padding="@dimen/dp13"
+            android:text="@string/add_address"
+            app:cornerRadius="@dimen/dp10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/add_address_cv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -15,12 +15,15 @@
         android:layout_marginTop="@dimen/dp10"
         >
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp10"
             android:elevation="@dimen/dp5"
+            android:translationZ="@dimen/dp5"
             app:cardCornerRadius="@dimen/dp5"
+            app:strokeColor="@color/black"
+            app:strokeWidth="@dimen/dp2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +32,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/dp10">
+                android:paddingTop="@dimen/dp15"
+                android:paddingStart="@dimen/dp10"
+                android:paddingEnd="@dimen/dp10"
+                android:paddingBottom="@dimen/dp15">
 
                 <TextView
                     android:id="@+id/txt_cart_item_title"
@@ -94,7 +100,7 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

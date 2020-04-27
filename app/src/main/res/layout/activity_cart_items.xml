@@ -48,7 +48,7 @@
                 android:id="@+id/img_info_bottom"
                 android:layout_width="@dimen/dp30"
                 android:layout_height="@dimen/dp30"
-                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginStart="@dimen/dp10"
                 android:src="@drawable/ic_info"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
                 style="@style/Regular_black_17_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp15"
+                android:layout_marginStart="@dimen/dp10"
                 android:text="@string/total"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -71,20 +71,18 @@
                 style="@style/Regular_greyish_18_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp15"
+                android:layout_marginStart="@dimen/dp10"
                 android:text="@string/val_zero"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/txt_total"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/btn_proceed_checkout"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_proceed_checkout"
                 style="@style/ConfirmButton"
-                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp15"
                 android:layout_marginEnd="@dimen/dp20"
                 android:layoutDirection="rtl"
                 android:padding="@dimen/dp13"
@@ -94,9 +92,8 @@
                 app:iconPadding="@dimen/dp10"
                 app:iconSize="@dimen/dp20"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                 />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

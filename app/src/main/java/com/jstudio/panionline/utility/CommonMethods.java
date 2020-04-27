@@ -86,6 +86,7 @@ public class CommonMethods {
     }
 
     public static void updateUserIdInDb(Context mContext, int tempUserId, int newUserId) {
+
         CartDataSource cartDataSource;
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(mContext).cartDAO());
         cartDataSource.updateUserId(newUserId, tempUserId)
@@ -99,8 +100,8 @@ public class CommonMethods {
 
                     @Override
                     public void onSuccess(Integer integer) {
-                        Toast.makeText(mContext, "[NEW_USERID]" + integer, Toast.LENGTH_LONG).show();
-                       // Preference_POSession.getInstance(mContext).putUserId(integer);
+                        if (integer != null && integer != 0)
+                            Preference_POSession.getInstance(mContext).putUserId(newUserId);
                     }
 
                     @Override
