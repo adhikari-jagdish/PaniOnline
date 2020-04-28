@@ -1,7 +1,9 @@
 package com.jstudio.panionline.service.api;
 
 import com.jstudio.panionline.model.AddAddressRequest;
+import com.jstudio.panionline.model.AddOrderRequest;
 import com.jstudio.panionline.model.AddressListResponse;
+import com.jstudio.panionline.model.CommonResponse;
 import com.jstudio.panionline.model.LoginResponse;
 import com.jstudio.panionline.model.ProductListResponse;
 import com.jstudio.panionline.model.VerifyOtpResponse;
@@ -46,5 +48,10 @@ public interface ApiService {
     Call<AddressListResponse> add_new_address(@Body  AddAddressRequest addAddressRequest);
 
 
+    /**
+     * Create New Order
+     */
+    @POST(AppConstant.ADD_ADDRESS)
+    Call<CommonResponse> create_new_order(@Body AddOrderRequest addOrderRequest);
 
 }

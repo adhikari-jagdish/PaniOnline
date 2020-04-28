@@ -76,7 +76,7 @@ public class UserLocationFragment extends Fragment {
         if (userProfileDetails.isLoggedIn()) {
             mBinding.txtUsernameTitle.setText("Welcome " + userProfileDetails.getProfileName() + "!");
             profileImageUrl = userProfileDetails.getProfileImageUrl();
-            displayProfileImage(profileImageUrl);
+            CommonMethods.displayProfileImage(getActivity(), profileImageUrl, mBinding.imgProfile);
         } else {
             mBinding.txtUsernameTitle.setText(getString(R.string.welcome_user));
         }
@@ -100,7 +100,7 @@ public class UserLocationFragment extends Fragment {
      */
     @SuppressLint("SetTextI18n")
     private void initUI() {
-        displayProfileImage(profileImageUrl);
+        CommonMethods.displayProfileImage(getActivity(), profileImageUrl, mBinding.imgProfile);
 
         //Init RecyclerView
         mAdapter = new HomeItemsAdapter(getActivity(), products);
@@ -109,14 +109,6 @@ public class UserLocationFragment extends Fragment {
         mBinding.homeItemsRv.setAdapter(mAdapter);
     }
 
-    private void displayProfileImage(String imgUrl) {
-        //Init Username Dashboard
-        Glide.with(getActivity())
-                .load(Uri.parse(imgUrl)) // add your image url
-                .apply(new RequestOptions().circleCrop())
-                .placeholder(R.drawable.ic_user)
-                .into(mBinding.imgProfile);
 
-    }
 
 }

@@ -2,11 +2,13 @@ package com.jstudio.panionline.utility;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.gmail.samehadar.iosdialog.IOSDialog;
 import com.google.android.material.snackbar.Snackbar;
 import com.jstudio.panionline.R;
@@ -52,6 +54,16 @@ public class CommonMethods {
                 .load(imageUrl)
                 .placeholder(R.drawable.bisleri_bottle_img)
                 .into(imageView);
+    }
+
+    public static void displayProfileImage(Context mContext, String imgUrl, ImageView imageView) {
+        //Init Username Dashboard
+        Glide.with(mContext)
+                .load(Uri.parse(imgUrl)) // add your image url
+                .apply(new RequestOptions().circleCrop())
+                .placeholder(R.drawable.ic_user)
+                .into(imageView);
+
     }
 
     public static void loadCircularImage(CircleImageView imageView, String imageUrl) {

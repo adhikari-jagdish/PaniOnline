@@ -122,6 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp5"
                 android:layout_marginTop="@dimen/dp18"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@id/address_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/address_card"
@@ -132,7 +133,6 @@
                 style="@style/Regular_black_17_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
                 android:text="@string/no_address_available"
                 app:layout_constraintBottom_toBottomOf="@id/address_card"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,11 +144,11 @@
                 style="@style/Regular_black_18_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp25"
+                android:layout_marginTop="@dimen/dp30"
                 android:text="@string/order_summary"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rc_address" />
+                app:layout_constraintTop_toBottomOf="@id/address_card" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rc_orderSummary"

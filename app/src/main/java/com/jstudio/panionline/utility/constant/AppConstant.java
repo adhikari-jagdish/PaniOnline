@@ -15,5 +15,8 @@ public class AppConstant {
 
     public static final int ADD_ADDRESS_ONACTIVITY_CODE = 42;
 
+    public static final int UPI_RB_ID = 2131296535;
+    public static final int COD_RB_ID = 2131296536;
+
 
 }

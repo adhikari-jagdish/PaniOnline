@@ -69,6 +69,12 @@
     <string name="item_added_to_cart">Added to Cart</string>
     <string name="no_items_in_cart">No Items In Cart!</string>
 
+    <string name="upi">UPI</string>
+    <string name="cod">COD</string>
+
+    <string name="have_a_promo_code">Have a promo code?</string>
+    <string name="apply">Apply</string>
+
     <string name="no_address_available">No address found!</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
@@ -84,6 +90,16 @@
     <string name="add_new_address_validation">Please delete an address to add more</string>
 
     <string name="sample_address">S-80, 4th Floor, Shakarpur, School Block, Laxminagar, Delhi</string>
+
+    <!--Settings-->
+    <string name="user">User</string>
+    <string name="likes_reviews_counts">02 Likes | 04 Reviews</string>
+    <string name="reviews">Reviews</string>
+    <string name="latest_offers">Latest Offers</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="faq">Faqs</string>
+    <string name="signout">Sign out</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

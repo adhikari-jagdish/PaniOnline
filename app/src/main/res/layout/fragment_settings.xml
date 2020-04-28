@@ -1,14 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.ui.common.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/color_F4F7FA"
+        tools:context=".view.ui.common.SettingsFragment">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="@dimen/dp20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_profile_settings"
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp100"
+                android:layout_marginTop="@dimen/dp20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_profile_name"
+                style="@style/Regular_white_22_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/dp10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_profile_settings" />
+
+            <TextView
+                android:id="@+id/txt_profile_likes_reviews_counts"
+                style="@style/Regular_white_16_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:text="@string/likes_reviews_counts"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_profile_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_top">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/dp20"
+                >
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_first"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:elevation="@dimen/dp5"
+                    android:translationZ="@dimen/dp5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:paddingBottom="@dimen/dp15">
+
+                        <ImageView
+                            android:id="@+id/img_profile_edit"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:src="@drawable/ic_edit_profile"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/edit"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_edit"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_edit"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_edit" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_edit_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/profile_divider_one"
+                            style="@style/Divider"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginTop="@dimen/dp15"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/img_profile_edit" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_reviews"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:src="@drawable/ic_reviews"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_one" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/reviews"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_reviews"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_reviews"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_reviews" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_reviews_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_one" />
+
+                        <View
+                            android:id="@+id/profile_divider_two"
+                            style="@style/Divider"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginTop="@dimen/dp15"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/img_profile_reviews" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_offers"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:src="@drawable/ic_sale"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_two" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/latest_offers"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_offers"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_offers"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_offers" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_offers_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_two" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_second"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:elevation="@dimen/dp5"
+                    android:translationZ="@dimen/dp5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_first">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp15"
+                        android:paddingBottom="@dimen/dp15">
+
+                        <ImageView
+                            android:id="@+id/img_profile_rate_us"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:src="@drawable/ic_rate_us"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/rate_us"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_rate_us"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_rate_us"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_rate_us" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_rate_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:id="@+id/profile_divider_four"
+                            style="@style/Divider"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginTop="@dimen/dp15"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/img_profile_rate_us" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_terms_conditions"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:src="@drawable/ic_reviews"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_four" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/terms_conditions"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_terms_conditions"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_terms_conditions"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_terms_conditions" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_terms_conditions_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_four" />
+
+                        <View
+                            android:id="@+id/profile_divider_five"
+                            style="@style/Divider"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/dp1"
+                            android:layout_marginTop="@dimen/dp15"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/img_profile_terms_conditions" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_faqs"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:src="@drawable/ic_faq"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_five" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/faq"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_faqs"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_faqs"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_faqs" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_faqs_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/profile_divider_five" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cv_third"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:elevation="@dimen/dp5"
+                    android:translationZ="@dimen/dp5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_second">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/dp15">
+
+                        <ImageView
+                            android:id="@+id/img_profile_signout"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp25"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:src="@drawable/ic_signout"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            style="@style/Regular_black_16_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:text="@string/signout"
+                            app:layout_constraintBottom_toBottomOf="@id/img_profile_signout"
+                            app:layout_constraintStart_toEndOf="@id/img_profile_signout"
+                            app:layout_constraintTop_toTopOf="@id/img_profile_signout" />
+
+                        <ImageView
+                            android:id="@+id/img_profile_signout_right_pointer"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_marginStart="@dimen/dp15"
+                            android:layout_marginTop="@dimen/dp15"
+                            android:layout_marginEnd="@dimen/dp15"
+                            android:src="@drawable/ic_right_pointer_black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
