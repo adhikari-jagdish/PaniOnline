@@ -27,7 +27,7 @@
             style="@style/Regular_black_17_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Items In Cart"
+            android:text="@string/no_items_in_cart"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@id/cl_bottom"
             app:layout_constraintEnd_toEndOf="parent"

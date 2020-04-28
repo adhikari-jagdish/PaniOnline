@@ -8,6 +8,7 @@ import com.jstudio.panionline.model.VerifyOtpResponse;
 import com.jstudio.panionline.utility.constant.AppConstant;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -42,7 +43,7 @@ public interface ApiService {
      * @param addAddressRequest Model contains all fields to post
      */
     @POST(AppConstant.ADD_ADDRESS)
-    Call<AddressListResponse> add_new_address(AddAddressRequest addAddressRequest);
+    Call<AddressListResponse> add_new_address(@Body  AddAddressRequest addAddressRequest);
 
 
 

@@ -67,6 +67,11 @@
     <string name="cash_on_delivery">Cash on Delivery</string>
     <string name="empty_cart">Cart Empty</string>
     <string name="item_added_to_cart">Added to Cart</string>
+    <string name="no_items_in_cart">No Items In Cart!</string>
+
+    <string name="no_address_available">No address found!</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 
     <!--Add Address-->
     <string name="flat_building">House No. / Flat / Floor</string>
@@ -76,6 +81,7 @@
     <string name="state">State</string>
     <string name="pincode">6 digits [0–9] PIN code</string>
     <string name="add_address">Add Address</string>
+    <string name="add_new_address_validation">Please delete an address to add more</string>
 
     <string name="sample_address">S-80, 4th Floor, Shakarpur, School Block, Laxminagar, Delhi</string>
 

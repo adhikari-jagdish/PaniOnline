@@ -122,10 +122,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp5"
                 android:layout_marginTop="@dimen/dp18"
+                app:layout_constraintBottom_toBottomOf="@id/address_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/address_card"
-                app:layout_constraintTop_toBottomOf="@id/txt_delivery_address_title" />
+                app:layout_constraintTop_toTopOf="@id/address_card" />
 
+            <TextView
+                android:id="@+id/txt_no_address_available"
+                style="@style/Regular_black_17_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:text="@string/no_address_available"
+                app:layout_constraintBottom_toBottomOf="@id/address_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/address_card"
+                app:layout_constraintTop_toTopOf="@id/address_card" />
 
             <TextView
                 android:id="@+id/txt_order_summary_title"

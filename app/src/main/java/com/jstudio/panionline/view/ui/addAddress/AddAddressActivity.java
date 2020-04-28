@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.ActivityAddAddressBinding;
 import com.jstudio.panionline.model.AddAddressRequest;
-import com.jstudio.panionline.model.AddressListResponse;
 import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.utility.session.Preference_POSession;
 import com.jstudio.panionline.view.base.BaseActivity;
@@ -53,10 +51,11 @@ public class AddAddressActivity extends BaseActivity {
                             flatBuilding, colonyStreet, landMark, pinCode, completeAddress
                     ));
                     addressViewModel.getAddAddressResponse().observe(this, addressListResponse -> {
-                        if(addressListResponse!=null){
-                            if(addressListResponse.isStatusCode()){
+                        if (addressListResponse != null) {
+                            if (addressListResponse.isStatusCode()) {
                                 setResult(RESULT_OK);
-                            }else{
+                                finish();
+                            } else {
                                 CommonMethods.showSnackBar(mBinding.getRoot(), addressListResponse.getMessage());
                             }
                         }

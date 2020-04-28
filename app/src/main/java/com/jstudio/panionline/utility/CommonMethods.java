@@ -1,5 +1,6 @@
 package com.jstudio.panionline.utility;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,6 +19,8 @@ import com.jstudio.panionline.utility.session.Preference_POSession;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -111,6 +114,7 @@ public class CommonMethods {
                 });
 
     }
+
 
     public static void showDialog(Context mContext) {
         try {

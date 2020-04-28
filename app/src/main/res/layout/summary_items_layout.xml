@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="cartItems"
+            type="com.jstudio.panionline.service.database.CartItem"/>
+    </data>
+
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
@@ -23,7 +29,7 @@
            style="@style/Regular_black_17_text"
            android:layout_width="@dimen/dp200"
            android:layout_height="wrap_content"
-           android:text="@string/bisleri_20"
+           android:text="@{cartItems.productName}"
            android:layout_marginTop="@dimen/dp15"
            android:layout_marginStart="@dimen/dp10"
            app:layout_constraintTop_toBottomOf="@id/divider_line"
@@ -35,7 +41,7 @@
            style="@style/Regular_black_17_text"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="@string/qty_one"
+           android:text="@{`Qty: ` + cartItems.productQuantity}"
            android:layout_marginTop="@dimen/dp15"
            android:layout_marginEnd="@dimen/dp50"
            app:layout_constraintTop_toBottomOf="@id/divider_line"
@@ -47,7 +53,7 @@
            style="@style/Regular_black_17_text"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="@string/total_val"
+           android:text="@{`₹ ` + cartItems.productPrice + `.00`}"
            android:layout_marginTop="@dimen/dp15"
            android:layout_marginStart="@dimen/dp10"
            android:layout_marginEnd="@dimen/dp10"

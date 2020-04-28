@@ -68,9 +68,9 @@ public class CartItemsActivity extends BaseActivity {
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void getItemTotal(CalculatePriceEvent calculatePriceEvent){
-        if(calculatePriceEvent!=null){
-           getItemsTotal();
+    public void getItemTotal(CalculatePriceEvent calculatePriceEvent) {
+        if (calculatePriceEvent != null) {
+            getItemsTotal();
         }
     }
 
@@ -139,7 +139,8 @@ public class CartItemsActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(sum -> {
-                    mbinding.txtTotalVal.setText(getText(R.string.inr_symbol) + String.valueOf(sum)+".00");
+                    mbinding.txtTotalVal.setText(getText(R.string.inr_symbol) + String.valueOf(sum) + ".00");
+                    EventBus.getDefault().postSticky(new SendTotalAmountEvent(String.valueOf(sum)));
                 }, throwable -> {
                     Log.d(TAG, "Sum_Error===>");
                 })

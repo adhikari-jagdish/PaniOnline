@@ -10,12 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.SummaryItemsLayoutBinding;
+import com.jstudio.panionline.service.database.CartItem;
+
+import java.util.List;
 
 public class OrderSummaryItemsAdapter extends RecyclerView.Adapter<OrderSummaryItemsAdapter.OrderSummaryViewHolder> {
     private Context mContext;
+    private List<CartItem> mCartItemList;
+    private CartItem cartItemObj;
 
-    public OrderSummaryItemsAdapter(Context mContext) {
+    public OrderSummaryItemsAdapter(Context mContext, List<CartItem> cartItemList) {
         this.mContext = mContext;
+        this.mCartItemList = cartItemList;
     }
 
     @NonNull
@@ -27,12 +33,13 @@ public class OrderSummaryItemsAdapter extends RecyclerView.Adapter<OrderSummaryI
 
     @Override
     public void onBindViewHolder(@NonNull OrderSummaryViewHolder holder, int position) {
-        holder.bind(position);
+        cartItemObj = mCartItemList.get(position);
+        holder.binding.setCartItems(cartItemObj);
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return mCartItemList.size();
     }
 
     public class OrderSummaryViewHolder extends RecyclerView.ViewHolder {
@@ -41,10 +48,6 @@ public class OrderSummaryItemsAdapter extends RecyclerView.Adapter<OrderSummaryI
         public OrderSummaryViewHolder(@NonNull SummaryItemsLayoutBinding itemView) {
             super(itemView.getRoot());
             this.binding = itemView;
-        }
-
-        public void bind(int position) {
-
         }
     }
 }

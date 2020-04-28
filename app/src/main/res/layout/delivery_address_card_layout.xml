@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="address"
-            type="com.jstudio.panionline.model.AddressListResponse.DataBean"/>
+            type="com.jstudio.panionline.model.AddressListResponse.DataBean" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/items_card"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp150"
-        android:background="@color/white"
         android:layout_marginStart="@dimen/dp20"
         android:layout_marginBottom="@dimen/dp3"
+        android:background="@color/white"
         android:elevation="@dimen/dp5"
         android:translationZ="@dimen/dp5"
         app:cardCornerRadius="@dimen/dp5">
@@ -45,18 +46,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <RadioButton
                 android:id="@+id/img_bottom_check"
                 android:layout_width="@dimen/dp25"
                 android:layout_height="@dimen/dp25"
                 android:layout_marginStart="@dimen/dp20"
-                android:layout_marginEnd="@dimen/dp10"
-                android:background="@drawable/shape_circle"
-                android:padding="@dimen/dp7"
                 android:layout_marginTop="@dimen/dp20"
-                android:src="@drawable/ic_tick"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_marginEnd="@dimen/dp10"
+                android:padding="@dimen/dp7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/txt_delivery_address_tick"
