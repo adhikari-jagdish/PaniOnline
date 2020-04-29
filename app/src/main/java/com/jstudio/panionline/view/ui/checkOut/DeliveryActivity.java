@@ -49,6 +49,7 @@ public class DeliveryActivity extends BaseActivity {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private CartDataSource cartDataSource;
     private List<CartItem> cartItemList = new ArrayList<>();
+    private String totalAmount = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,8 @@ public class DeliveryActivity extends BaseActivity {
     protected void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+        getAddressList();
+        getAllItemsInCart();
     }
 
     @Override
@@ -76,16 +79,16 @@ public class DeliveryActivity extends BaseActivity {
     @SuppressLint("SetTextI18n")
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void getTotal(SendTotalAmountEvent sendTotalAmountEvent) {
-       if(sendTotalAmountEvent!=null){
-           mBinding.txtTotalVal.setText(getText(R.string.inr_symbol)
-                   + String.valueOf(sendTotalAmountEvent.getTotalAmount()) + ".00");
-       }
+        if (sendTotalAmountEvent != null) {
+            totalAmount = sendTotalAmountEvent.getTotalAmount();
+            mBinding.txtTotalVal.setText(getText(R.string.inr_symbol)
+                    + totalAmount + ".00");
+        }
     }
 
     private void initUi() {
         cartDataSource = new LocalCartDataSource(CartDatabase.getInstance(this).cartDAO());
-        getAddressList();
-        getAllItemsInCart();
+
         mAdapter = new DeliveryAddressAdapter(this, addressList);
         mBinding.rcAddress.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         mBinding.rcAddress.setAdapter(mAdapter);
@@ -117,7 +120,8 @@ public class DeliveryActivity extends BaseActivity {
         if (v != null) {
             switch (v.getId()) {
                 case R.id.btn_confirm:
-                    PaymentActivity.startPaymentActivity(this);
+                    PaymentActivity.startPaymentActivity(this, mAdapter.getSelectedAddress(), totalAmount,
+                            cartItemList);
                     break;
 
                 case R.id.img_add_address:

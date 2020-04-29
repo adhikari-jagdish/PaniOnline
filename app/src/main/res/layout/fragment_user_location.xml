@@ -7,7 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.ui.user.home.UserLocationFragment">
+        tools:context=".view.ui.home.UserLocationFragment">
 
         <!--<fragment
             android:id="@+id/user_home_map"

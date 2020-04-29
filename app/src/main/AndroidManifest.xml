@@ -14,12 +14,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.ui.addAddress.AddAddressActivity"></activity>
+        <activity android:name=".view.ui.common.OrderPlacedSuccessActivity"></activity>
+        <activity android:name=".view.ui.addAddress.AddAddressActivity" />
         <activity android:name=".view.ui.cartItems.CartItemsActivity" />
         <activity android:name=".view.ui.checkOut.PaymentActivity" />
         <activity android:name=".view.ui.checkOut.DeliveryActivity" />
-        <activity android:name=".view.ui.user.itemDetails.ItemDetails" />
-        <activity android:name=".view.ui.user.home.UserHomeActivity"></activity>
+        <activity android:name=".view.ui.productDetails.ItemDetails" />
+        <activity android:name=".view.ui.home.UserHomeActivity" />
         <activity
             android:name=".view.ui.accountVerification.AccountVerificationActivity"
             android:launchMode="singleTop" />

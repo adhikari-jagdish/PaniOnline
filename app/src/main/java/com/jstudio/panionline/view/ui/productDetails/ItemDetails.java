@@ -1,4 +1,4 @@
-package com.jstudio.panionline.view.ui.user.itemDetails;
+package com.jstudio.panionline.view.ui.productDetails;
 
 import android.content.Context;
 import android.content.Intent;

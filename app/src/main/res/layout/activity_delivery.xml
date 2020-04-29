@@ -213,7 +213,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp20"
-                android:layoutDirection="rtl"
                 android:padding="@dimen/dp13"
                 android:text="@string/confirm"
                 app:cornerRadius="@dimen/dp10"
@@ -221,7 +220,7 @@
                 app:iconPadding="@dimen/dp10"
                 app:iconSize="@dimen/dp20"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
 

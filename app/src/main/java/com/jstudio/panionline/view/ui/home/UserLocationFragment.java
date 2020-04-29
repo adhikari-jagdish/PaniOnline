@@ -1,7 +1,6 @@
-package com.jstudio.panionline.view.ui.user.home;
+package com.jstudio.panionline.view.ui.home;
 
 import android.annotation.SuppressLint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +11,14 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.FragmentUserLocationBinding;
 import com.jstudio.panionline.model.ProductListResponse;
 import com.jstudio.panionline.model.eventbus.SendUserProfileDetails;
 import com.jstudio.panionline.utility.CommonMethods;
-import com.jstudio.panionline.view.ui.user.home.adapter.HomeItemsAdapter;
+import com.jstudio.panionline.view.ui.home.adapter.HomeItemsAdapter;
 import com.jstudio.panionline.viewmodel.ProductListViewModel;
 
 import org.greenrobot.eventbus.EventBus;

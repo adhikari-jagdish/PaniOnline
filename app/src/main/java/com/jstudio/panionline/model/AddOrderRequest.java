@@ -9,22 +9,51 @@ public class AddOrderRequest {
     private String deliveryAddress;
     private int totalAmount;
     private String paymentMode;
-    private List<ProductDetails> productDetails;
+    private List<CartItemsDetails> productDetails;
 
-    public AddOrderRequest(int clientId, String orderDate, String clientName, String deliveryAddress, int totalAmount, String paymentMode, List<ProductDetails> productDetails) {
+    public void setClientId(int clientId) {
         this.clientId = clientId;
-        this.orderDate = orderDate;
-        this.clientName = clientName;
-        this.deliveryAddress = deliveryAddress;
-        this.totalAmount = totalAmount;
-        this.paymentMode = paymentMode;
-        this.productDetails = productDetails;
     }
 
-    private static class ProductDetails{
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    public void setTotalAmount(int totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setPaymentMode(String paymentMode) {
+        this.paymentMode = paymentMode;
+    }
+
+    public void setCartItems(List<CartItemsDetails> cartItems) {
+        this.productDetails = cartItems;
+    }
+
+    public static class CartItemsDetails {
         private int productId;
         private String productName;
         private int productQuantity;
 
+        public void setProductId(int productId) {
+            this.productId = productId;
+        }
+
+        public void setProductName(String productName) {
+            this.productName = productName;
+        }
+
+        public void setProductQuantity(int productQuantity) {
+            this.productQuantity = productQuantity;
+        }
     }
 }

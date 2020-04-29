@@ -1,12 +1,15 @@
 package com.jstudio.panionline.service.database;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Cart")
-public class CartItem {
+public class CartItem implements Parcelable {
 
     public CartItem() {
     }
@@ -30,6 +33,42 @@ public class CartItem {
 
     @ColumnInfo(name = "userId")
     private int userId;
+
+    protected CartItem(Parcel in) {
+        productId = in.readInt();
+        productName = in.readString();
+        productImageUrl = in.readString();
+        productPrice = in.readInt();
+        productQuantity = in.readInt();
+        userId = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(productId);
+        dest.writeString(productName);
+        dest.writeString(productImageUrl);
+        dest.writeInt(productPrice);
+        dest.writeInt(productQuantity);
+        dest.writeInt(userId);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<CartItem> CREATOR = new Creator<CartItem>() {
+        @Override
+        public CartItem createFromParcel(Parcel in) {
+            return new CartItem(in);
+        }
+
+        @Override
+        public CartItem[] newArray(int size) {
+            return new CartItem[size];
+        }
+    };
 
     public int getUserId() {
         return userId;

@@ -68,9 +68,15 @@
     <string name="empty_cart">Cart Empty</string>
     <string name="item_added_to_cart">Added to Cart</string>
     <string name="no_items_in_cart">No Items In Cart!</string>
+    <string name="delivery_status_pending">Pending</string>
 
     <string name="upi">UPI</string>
     <string name="cod">COD</string>
+    <string name="no_upi_app_found">No UPI app found, please install one to continue</string>
+    <string name="transaction_failed">Transaction failed.Please try again</string>
+    <string name="payment_cancelled_by_user">Payment cancelled by user.</string>
+
+    <string name="no_internet_connection">Please Check Your Internet Connection</string>
 
     <string name="have_a_promo_code">Have a promo code?</string>
     <string name="apply">Apply</string>
@@ -100,6 +106,7 @@
     <string name="terms_conditions">Terms &amp; Conditions</string>
     <string name="faq">Faqs</string>
     <string name="signout">Sign out</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

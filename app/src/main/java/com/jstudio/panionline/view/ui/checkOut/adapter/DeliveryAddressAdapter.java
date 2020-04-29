@@ -22,6 +22,7 @@ public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddress
     private List<AddressListResponse.DataBean> mAddressList;
     private AddressListResponse.DataBean addressObj;
     private int lastSelectedPosition = -1;
+    private String selectedAddress = "";
 
     public DeliveryAddressAdapter(Context mContext, List<AddressListResponse.DataBean> addressList) {
         this.mContext = mContext;
@@ -74,14 +75,14 @@ public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddress
                     case R.id.img_bottom_check:
                         lastSelectedPosition = getAdapterPosition();
                         notifyDataSetChanged();
-                        getSelectedAddress(this.binding.txtAddress.getText().toString().trim());
+                        selectedAddress = this.binding.txtAddress.getText().toString().trim();
                         break;
                 }
             }
         }
     }
 
-    public String getSelectedAddress(String selectedAddress) {
+    public String getSelectedAddress() {
         return selectedAddress;
     }
 

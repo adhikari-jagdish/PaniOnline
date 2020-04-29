@@ -1,4 +1,4 @@
-package com.jstudio.panionline.view.ui.user.home;
+package com.jstudio.panionline.view.ui.home;
 
 import android.content.Context;
 import android.content.Intent;

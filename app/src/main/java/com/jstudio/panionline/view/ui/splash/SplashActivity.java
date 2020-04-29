@@ -6,7 +6,7 @@ import com.jstudio.panionline.R;
 import com.jstudio.panionline.utility.CommonMethods;
 import com.jstudio.panionline.utility.session.Preference_POSession;
 import com.jstudio.panionline.view.base.BaseActivity;
-import com.jstudio.panionline.view.ui.user.home.UserHomeActivity;
+import com.jstudio.panionline.view.ui.home.UserHomeActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

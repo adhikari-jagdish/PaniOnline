@@ -1,4 +1,4 @@
-package com.jstudio.panionline.view.ui.user.home.adapter;
+package com.jstudio.panionline.view.ui.home.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.jstudio.panionline.R;
 import com.jstudio.panionline.databinding.HomeItemsCellLayoutBinding;
 import com.jstudio.panionline.model.ProductListResponse;
-import com.jstudio.panionline.view.ui.user.itemDetails.ItemDetails;
+import com.jstudio.panionline.view.ui.productDetails.ItemDetails;
 
 import java.util.List;
 
