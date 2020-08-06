@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.ui.common.OrderPlacedSuccessActivity"></activity>
+        <activity android:name=".view.ui.common.OrderPlacedSuccessActivity"/>
         <activity android:name=".view.ui.addAddress.AddAddressActivity" />
         <activity android:name=".view.ui.cartItems.CartItemsActivity" />
         <activity android:name=".view.ui.checkOut.PaymentActivity" />
